@@ -1,6 +1,6 @@
 # SwipeableCard
 
-#COMING SOON
+#COMING SOON!!!
 
 ![alt tag](http://i.giphy.com/26tP83JrpN9mpN5wA.gif)
 
