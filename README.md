@@ -12,7 +12,7 @@ A simple implementation of swipe card like StreetView!!
 
 Swipeable Card is pushed to JCenter, so you just need to add the following dependency to your `build.gradle`.
 ```
-coming soon!
+Coming soon!
 ```
 
 In alternative you can use AAR repository with:
@@ -31,7 +31,7 @@ allprojects {
 And add this dependecies
 
 ```
-coming soon!
+Coming soon!
 ```
 In your layout.xml
 
@@ -40,7 +40,6 @@ In your layout.xml
       android:layout_width="match_parent"
       android:layout_height="match_parent"
       android:id="@+id/swipeCard">
-
 </it.michelelacorte.swipeablecard.SwipeableCard>
 ```
 
