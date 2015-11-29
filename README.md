@@ -78,7 +78,6 @@ Method called by `OptionView`
 - Added method `getColorToolbar`
 - Added method `setText(String text)`for set custom text
 - Added method `getText`
-- Added boolean `noBackground` default is false
 
 ##CREDITS
 
