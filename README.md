@@ -1,6 +1,5 @@
 # SwipeableCard
 ##A simple implementation of swipe card like StreetView!!
-#COMING SOON!!!
 
 
 ![alt tag](http://i.giphy.com/26tP83JrpN9mpN5wA.gif)
