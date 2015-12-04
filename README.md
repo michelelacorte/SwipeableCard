@@ -37,7 +37,10 @@ And add this dependecies
 ```
 Coming soon!
 ```
-In your layout.xml
+
+#SINGLE CARD
+
+In your Layout.xml
 
 ```
 <it.michelelacorte.swipeablecard.SwipeableCard
@@ -47,11 +50,104 @@ In your layout.xml
 </it.michelelacorte.swipeablecard.SwipeableCard>
 ```
 
-In your `MainActivity.java`
+In your `MainActivity.java` before `setContentView()`
 
 ```
-swipeableCard = (SwipeableCard) findViewById(R.id.swipeCard);
-swipeableCard.animationCardStart();
+//Just an example
+        Toolbar.OnMenuItemClickListener toolbarListener = new Toolbar.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                int id = item.getItemId();
+                if (id == R.id.action_settings) {
+                    Toast.makeText(getApplicationContext(), "Settings Menu!", Toast.LENGTH_LONG).show();
+                    return true;
+                }
+
+                return false;
+            }
+        };
+
+        OptionView.setOptionView(new OptionView.Builder()
+                .image(R.drawable.image)
+                .title("TITLE")
+                .menuItem(R.menu.menu_main)
+                .toolbarListener(toolbarListener)
+                //And all you want!
+                .build());
+```
+Than under `setContentView()` just add card to view!
+
+```
+SwipeableCard swipeableCard = (SwipeableCard) findViewById(R.id.swipeCard);
+```
+
+#RECYCLER VIEW
+
+In your Layout.xml add RecyclerView
+
+```
+<android.support.v7.widget.RecyclerView
+    android:id="@+id/rv"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:cacheColorHint="@android:color/transparent" />
+```
+
+In your `MainActivity.java`
+
+This as private variable
+
+```
+RecyclerView rv;
+LinearLayoutManager llm;
+```
+
+Than under setContentView()
+
+```
+//Just an example
+
+        rv = (RecyclerView) findViewById(R.id.rv);
+        llm = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
+        rv.setLayoutManager(llm);
+
+        List<OptionView> optionViews = new ArrayList<>();
+        Toolbar.OnMenuItemClickListener toolbarListener = new Toolbar.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                int id = item.getItemId();
+                if (id == R.id.action_settings) {
+                    Toast.makeText(getApplicationContext(), "Settings Menu!", Toast.LENGTH_LONG).show();
+                    return true;
+                }
+
+                return false;
+            }
+        };
+        optionViews.add(new OptionView.Builder()
+                .image(R.drawable.image)
+                .title("TITLE")
+                .colorTitle(R.color.colorPrimary)
+                .menuItem(R.menu.menu_main)
+                .toolbarListener(toolbarListener).build());
+        optionViews.add(new OptionView.Builder()
+                .text("Text, a lot of Text, a lot of Text, a lot of Text, a lot of Text, a lot of Text, a lot of Text, a lot of Text, a lot of Text, a lot of Text, a lot of Text," +
+                                " a lot of Text, a lot of Text, a lot of Text, a lot of Text, a lot of Text, a lot of Text")
+                .title("TITLE")
+                .colorTitle(R.color.colorPrimary)
+                .menuItem(R.menu.menu_main)
+                .toolbarListener(toolbarListener).build());
+        optionViews.add(new OptionView.Builder()
+                .subTitle("Sub Title!!!")
+                .image(R.drawable.image)
+                .title("TITLE")
+                .colorTitle(R.color.colorPrimary)
+                .menuItem(R.menu.menu_main)
+                .toolbarListener(toolbarListener).build());
+
+        //Set custom adapter.
+        SwipeableCardAdapter adapter = new SwipeableCardAdapter(optionViews, getApplicationContext());
+            rv.setAdapter(adapter);
 ```
 
 ##SYSTEM REQUIREMENT
@@ -62,25 +158,40 @@ Android API 21+
 
 **v1.0.0**
 - Support API 21+
-- Added class `OptionView.java` for set-up card with your own options
-- Added method `setMenuClickListener(Toolbar.OnMenuItemClickListener menuListener)` for set-up the menù item on click
+- Added class `SwipeableCard.java` for setUp view of Swipeable Card.
+- Added class `OptionView.java` that contains setter for set-up card with your own options.
+- Added class `SwipeableCardAdapter.java` an adapter ready to use the Swipeable Card in RecyclerView, its constructor accepts `List<OptionView>` for each optionsView of card and `Context`.
+- Added interface `AnimationCard` with abstract method for animation (for completeness only).
+- Added method `setOptionView(OptionView optionViews)` called by OptionView class for set-up card with your own options.
+- Added example App.
 
-Method called by `OptionView`
-
-- Added method `setTitle(String title)` default is empty
+Method called by `OptionView.getOptionView()`
+- Added method `getDuration()`
 - Added method `getTitle()`
-- Added method `setColorTitle(int color)` default is black
-- Added method `getColorTitle`
-- Added method `setMenuItem(int menuItem)` default there isn't a menu
-- Added method `getMenuItem`
-- Added method `setImage(int image)` for set drawable image
-- Added method `getImage`
-- Added method `setSubTitle(String subTitle)` default isn't set
-- Added method `getSubTitle`
-- Added method `setColorToolbar(int color)` default is `transparent`
-- Added method `getColorToolbar`
-- Added method `setText(String text)`for set custom text
-- Added method `getText`
+- Added method `getColorTitle()`
+- Added method `getMenuItem()`
+- Added method `getImage()`
+- Added method `getSubTitle()`
+- Added method `getColorToolbar()`
+- Added method `getText()`
+- Added method `getToolbarListener()`
+- Added method `isSubTitle()` check if Sub Title is set
+- Added method `isMenuItem()` check if menuItem is set
+- Added method `isImage()` check if Image is set
+- Added method `isText()` check if Text is set
+
+Method called by `OptionView.Builder()`
+
+- Added method `setDuration(long duration)` default is 500 millis
+- Added method `toolbarListener(Toolbar.OnMenuItemClickListener toolbarListener)` for set-up the menù item on click
+- Added method `title(String title)` default is empty
+- Added method `colorTitle(int color)` default is black
+- Added method `menuItem(int menuItem)` default there isn't a menu
+- Added method `image(int image)` for set drawable image
+- Added method `subTitle(String subTitle)` default isn't set
+- Added method `toolbarColor(int color)` default is `transparent`
+- Added method `text(String text)`for set custom text
+- Added method `build()` for build swipeable card with custom configuration
 
 ##CREDITS
 
