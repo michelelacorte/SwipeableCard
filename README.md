@@ -1,6 +1,7 @@
 # SwipeableCard
 ##A simple implementation of swipe card like StreetView!!
 
+[![alt tag](http://www.android-gems.com/badge/michelelacorte/SwipeableCard.svg)](http://www.android-gems.com/lib/michelelacorte/SwipeableCard?lib_id=753)
 
 ![alt tag](http://i.giphy.com/26tP83JrpN9mpN5wA.gif)
 
@@ -82,7 +83,7 @@ SwipeableCard swipeableCard = (SwipeableCard) findViewById(R.id.swipeCard);
 
 #RECYCLER VIEW
 
-In your Layout.xml add RecyclerView
+In your Layout.xml add `RecyclerView`
 
 ```
 <android.support.v7.widget.RecyclerView
@@ -101,7 +102,7 @@ RecyclerView rv;
 LinearLayoutManager llm;
 ```
 
-Than under setContentView()
+Than under `setContentView()`
 
 ```
 //Just an example
