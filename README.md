@@ -158,6 +158,9 @@ Android API 21+
 
 ##CHANGELOG
 
+**Coming Soon Version**
+- Support API 15+
+
 **v1.0.0**
 - Support API 21+
 - Added class `SwipeableCard.java` for setUp view of Swipeable Card.
