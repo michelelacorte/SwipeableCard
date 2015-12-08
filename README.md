@@ -159,7 +159,7 @@ Android API 21+
 ##CHANGELOG
 
 **Coming Soon Version**
-- Support API 15+
+- Support API 14+
 
 **v1.0.0**
 - Support API 21+
