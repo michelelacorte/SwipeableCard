@@ -154,7 +154,7 @@ Than under `setContentView()`
 
 ##SYSTEM REQUIREMENT
 
-Android API 21+
+Android API 14+
 
 ##CHANGELOG
 
