@@ -18,7 +18,7 @@
 
 Swipeable Card is pushed to JCenter, so you just need to add the following dependency to your `build.gradle`.
 ```
-compile 'it.michelelacorte.swipeablecard:library:1.0.0'
+compile 'it.michelelacorte.swipeablecard:library:1.0.1'
 ```
 
 In alternative you can use AAR repository with:
@@ -37,7 +37,7 @@ allprojects {
 And add this dependecies
 
 ```
-compile 'it.michelelacorte.swipeablecard:library:1.0.0@aar'
+compile 'it.michelelacorte.swipeablecard:library:1.0.1@aar'
 ```
 
 #SINGLE CARD
@@ -158,8 +158,9 @@ Android API 21+
 
 ##CHANGELOG
 
-**Coming Soon Version**
+**v1.0.1**
 - Support API 14+
+- Update library and gradle
 
 **v1.0.0**
 - Support API 21+
