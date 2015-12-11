@@ -158,6 +158,9 @@ Android API 14+
 
 ##CHANGELOG
 
+**Coming Soon Version**
+- Support all custom Card Layout!!
+
 **v1.0.1**
 - Support API 14+
 - Update library and gradle
