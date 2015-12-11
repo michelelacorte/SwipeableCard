@@ -160,6 +160,7 @@ Android API 14+
 
 **Coming Soon Version**
 - Support all custom Card Layout!!
+- Fixed minor compatibility issue
 
 **v1.0.1**
 - Support API 14+
