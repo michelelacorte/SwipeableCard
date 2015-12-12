@@ -46,6 +46,8 @@ compile 'it.michelelacorte.swipeablecard:library:1.0.1@aar'
 
 - [RecyclerView Card Readme](https://github.com/michelelacorte/SwipeableCard/blob/master/RECYCLERVIEW.md)
 
+- [Customization Card Readme](https://github.com/michelelacorte/SwipeableCard/blob/master/CUSTOMIZATION.md)
+
 
 ##SYSTEM REQUIREMENT
 
