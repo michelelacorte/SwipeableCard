@@ -160,7 +160,7 @@ Android API 14+
 
 **Coming Soon Version**
 - Support all custom `CardView` Layout!!
-- Fixed minor compatibility issue
+- Fixed minor bug  for compatibility with API 14+
 - Added three `ImageView` button (customizable)
 - Added two `TextView` (customizable)
 
