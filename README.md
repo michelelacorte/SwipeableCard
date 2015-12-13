@@ -42,12 +42,13 @@ compile 'it.michelelacorte.swipeablecard:library:1.0.1@aar'
 
 ##DOCUMENTATION
 
-- [Single Card Example](https://github.com/michelelacorte/SwipeableCard/blob/master/SINGLECARD.md)
+- [Swipeable Single Card Example](https://github.com/michelelacorte/SwipeableCard/blob/master/SINGLECARD.md)
 
-- [RecyclerView Card Example](https://github.com/michelelacorte/SwipeableCard/blob/master/RECYCLERVIEW.md)
+- [Swipeable RecyclerView Card Example](https://github.com/michelelacorte/SwipeableCard/blob/master/RECYCLERVIEW.md)
 
 - [Customization Card Example](https://github.com/michelelacorte/SwipeableCard/blob/master/CUSTOMIZATION.md)
 
+- [Any Card Layout Example](https://github.com/michelelacorte/SwipeableCard/blob/master/ANYCARD.md)
 
 ##SYSTEM REQUIREMENT
 
