@@ -58,13 +58,14 @@ Android API 14+
 
 **Coming Soon Version**
 - Support all custom `CardView` Layout!!
+- `Fab` button added!!
 - Fixed minor bug  for compatibility with API 14+
 - Added three `ImageView` button (customizable)
 - Added two `TextView` (customizable)
 
 Preview:
 
-![alt tag](http://s15.postimg.org/rcg1q7ui3/Screenshot_2015_12_12_01_43_35.png)
+![alt tag](http://s30.postimg.org/hkt4zmcht/Screenshot_2015_12_12_01_43_35.png)
 
 **v1.0.1**
 - Support API 14+
