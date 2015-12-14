@@ -1,6 +1,8 @@
 # SwipeableCard
 ##A simple implementation of swipe card like StreetView!!
 
+[![API](https://img.shields.io/badge/API-14%2B-yellow.svg?style=flat)](https://android-arsenal.com/api?level=14)
+
 [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-SwipeableCard-green.svg?style=true)](https://android-arsenal.com/details/1/2880)
 
 [![alt tag](http://www.android-gems.com/badge/michelelacorte/SwipeableCard.svg)](http://www.android-gems.com/lib/michelelacorte/SwipeableCard?lib_id=753)
