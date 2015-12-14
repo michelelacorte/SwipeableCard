@@ -7,6 +7,10 @@
 
 [![alt tag](http://www.android-gems.com/badge/michelelacorte/SwipeableCard.svg)](http://www.android-gems.com/lib/michelelacorte/SwipeableCard?lib_id=753)
 
+####New Floating Action Button!!!
+
+![alt tag](http://i.giphy.com/3o8doUXxjOCwHw2GEo.gif)
+
 ![alt tag](http://i.giphy.com/26tP83JrpN9mpN5wA.gif)
 
 ![alt tag](http://i.giphy.com/d2Za0uOe8fPYa38Q.gif)
