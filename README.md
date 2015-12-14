@@ -1,6 +1,8 @@
 # SwipeableCard
 ##A simple implementation of swipe card like StreetView!!
 
+<span class="badge-paypal"><a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=LY7EX8WMWPWV6" title="Donate to this project using Paypal"><img src="https://img.shields.io/badge/paypal-donate-yellow.svg" alt="PayPal donate button" /></a></span>
+
 [![API](https://img.shields.io/badge/API-14%2B-yellow.svg?style=flat)](https://android-arsenal.com/api?level=14)
 
 [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-SwipeableCard-green.svg?style=true)](https://android-arsenal.com/details/1/2880)
