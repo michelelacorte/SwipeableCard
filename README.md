@@ -70,6 +70,7 @@ Android API 14+
 - Fixed minor bug  for compatibility with API 14+
 - Added three `ImageView` button (customizable)
 - Added two `TextView` (customizable)
+- Possibility to set `SwipeableCard` radius
 
 Preview:
 
