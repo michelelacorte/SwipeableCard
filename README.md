@@ -64,13 +64,13 @@ Android API 14+
 
 ##CHANGELOG
 
-**Coming Soon Version**
-- Support all custom `CardView` Layout!!
-- `Fab` button added!!
+**v2.0.0**
+- Support all custom `CardView` Layout
+- `Fab` button added
 - Fixed minor bug  for compatibility with API 14+
-- Added three `ImageView` button (customizable)
-- Added two `TextView` (customizable)
-- Possibility to set `SwipeableCard` radius
+- Added three `ImageView` button (see Customizable)
+- Added two `TextView` (see Customizable)
+- Added method `setCardRadius(int radius)` default 4
 
 Preview:
 
