@@ -17,6 +17,7 @@ Use SwipeableCard, and than you can customize card with `OptionViewAddional.Buil
                         .setFabIcon(android.R.drawable.ic_dialog_info)
                         .setFabColor(R.color.colorPrimary)
                         .setOnClickListenerFab(clickFab)
+                        //And other method!
                         .build())
                 .build());
 ```
