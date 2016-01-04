@@ -2,7 +2,7 @@
 
 Use SwipeableCard with any layout!!!
 
-You just add to your layout a CardView and than use:
+You just add to your layout a `CardView` and than use:
 
 ```
 CardView card = (CardView) findViewById(R.id.cardCustom);
