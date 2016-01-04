@@ -1,9 +1,17 @@
 # SwipeableCard
 ##A simple implementation of swipe card like StreetView!!
 
+<span class="badge-paypal"><a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=LY7EX8WMWPWV6" title="Donate to this project using Paypal"><img src="https://img.shields.io/badge/paypal-donate-yellow.svg" alt="PayPal donate button" /></a></span>
+
+[![API](https://img.shields.io/badge/API-14%2B-yellow.svg?style=flat)](https://android-arsenal.com/api?level=14)
+
 [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-SwipeableCard-green.svg?style=true)](https://android-arsenal.com/details/1/2880)
 
 [![alt tag](http://www.android-gems.com/badge/michelelacorte/SwipeableCard.svg)](http://www.android-gems.com/lib/michelelacorte/SwipeableCard?lib_id=753)
+
+####New Floating Action Button!!!
+
+![alt tag](http://i.giphy.com/3o8doUXxjOCwHw2GEo.gif)
 
 ![alt tag](http://i.giphy.com/26tP83JrpN9mpN5wA.gif)
 
@@ -18,7 +26,7 @@
 
 Swipeable Card is pushed to JCenter, so you just need to add the following dependency to your `build.gradle`.
 ```
-compile 'it.michelelacorte.swipeablecard:library:1.0.0'
+compile 'it.michelelacorte.swipeablecard:library:2.0.0'
 ```
 
 In alternative you can use AAR repository with:
@@ -37,129 +45,40 @@ allprojects {
 And add this dependecies
 
 ```
-compile 'it.michelelacorte.swipeablecard:library:1.0.0@aar'
+compile 'it.michelelacorte.swipeablecard:library:2.0.0@aar'
 ```
 
-#SINGLE CARD
+##DOCUMENTATION
 
-In your Layout.xml
+- [Swipeable Single Card Example](https://github.com/michelelacorte/SwipeableCard/blob/master/SINGLECARD.md)
 
-```
-<it.michelelacorte.swipeablecard.SwipeableCard
-      android:layout_width="match_parent"
-      android:layout_height="match_parent"
-      android:id="@+id/swipeCard">
-</it.michelelacorte.swipeablecard.SwipeableCard>
-```
+- [Swipeable RecyclerView Card Example](https://github.com/michelelacorte/SwipeableCard/blob/master/RECYCLERVIEW.md)
 
-In your `MainActivity.java` before `setContentView()`
+- [Customization Card Example](https://github.com/michelelacorte/SwipeableCard/blob/master/CUSTOMIZATION.md)
 
-```
-//Just an example
-        Toolbar.OnMenuItemClickListener toolbarListener = new Toolbar.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
-                int id = item.getItemId();
-                if (id == R.id.action_settings) {
-                    Toast.makeText(getApplicationContext(), "Settings Menu!", Toast.LENGTH_LONG).show();
-                    return true;
-                }
-
-                return false;
-            }
-        };
-
-        OptionView.setOptionView(new OptionView.Builder()
-                .image(R.drawable.image)
-                .title("TITLE")
-                .menuItem(R.menu.menu_main)
-                .toolbarListener(toolbarListener)
-                //And all you want!
-                .build());
-```
-Than under `setContentView()` just add card to view!
-
-```
-SwipeableCard swipeableCard = (SwipeableCard) findViewById(R.id.swipeCard);
-```
-
-#RECYCLER VIEW
-
-In your Layout.xml add `RecyclerView`
-
-```
-<android.support.v7.widget.RecyclerView
-    android:id="@+id/rv"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:cacheColorHint="@android:color/transparent" />
-```
-
-In your `MainActivity.java`
-
-This as private variable
-
-```
-RecyclerView rv;
-LinearLayoutManager llm;
-```
-
-Than under `setContentView()`
-
-```
-//Just an example
-
-        rv = (RecyclerView) findViewById(R.id.rv);
-        llm = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
-        rv.setLayoutManager(llm);
-
-        List<OptionView> optionViews = new ArrayList<>();
-        Toolbar.OnMenuItemClickListener toolbarListener = new Toolbar.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
-                int id = item.getItemId();
-                if (id == R.id.action_settings) {
-                    Toast.makeText(getApplicationContext(), "Settings Menu!", Toast.LENGTH_LONG).show();
-                    return true;
-                }
-
-                return false;
-            }
-        };
-        optionViews.add(new OptionView.Builder()
-                .image(R.drawable.image)
-                .title("TITLE")
-                .colorTitle(R.color.colorPrimary)
-                .menuItem(R.menu.menu_main)
-                .toolbarListener(toolbarListener).build());
-        optionViews.add(new OptionView.Builder()
-                .text("Text, a lot of Text, a lot of Text, a lot of Text, a lot of Text, a lot of Text, a lot of Text, a lot of Text, a lot of Text, a lot of Text, a lot of Text," +
-                                " a lot of Text, a lot of Text, a lot of Text, a lot of Text, a lot of Text, a lot of Text")
-                .title("TITLE")
-                .colorTitle(R.color.colorPrimary)
-                .menuItem(R.menu.menu_main)
-                .toolbarListener(toolbarListener).build());
-        optionViews.add(new OptionView.Builder()
-                .subTitle("Sub Title!!!")
-                .image(R.drawable.image)
-                .title("TITLE")
-                .colorTitle(R.color.colorPrimary)
-                .menuItem(R.menu.menu_main)
-                .toolbarListener(toolbarListener).build());
-
-        //Set custom adapter.
-        SwipeableCardAdapter adapter = new SwipeableCardAdapter(optionViews, getApplicationContext());
-            rv.setAdapter(adapter);
-```
+- [Any Card Layout Example](https://github.com/michelelacorte/SwipeableCard/blob/master/ANYCARD.md)
 
 ##SYSTEM REQUIREMENT
 
-Android API 21+
+Android API 14+
 
 ##CHANGELOG
 
-**Coming Soon Version**
+**v2.0.0**
+- Support all custom `CardView` Layout
+- `Fab` button added
+- Fixed minor bug  for compatibility with API 14+
+- Added three `ImageView` button (see Customizable)
+- Added two `TextView` (see Customizable)
+- Added method `setCardRadius(int radius)` default 4
+
+Preview:
+
+![alt tag](http://s30.postimg.org/hkt4zmcht/Screenshot_2015_12_12_01_43_35.png)
+
+**v1.0.1**
 - Support API 14+
+- Update library and gradle
 
 **v1.0.0**
 - Support API 21+
