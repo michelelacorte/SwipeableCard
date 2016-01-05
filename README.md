@@ -9,6 +9,8 @@
 
 [![alt tag](http://www.android-gems.com/badge/michelelacorte/SwipeableCard.svg)](http://www.android-gems.com/lib/michelelacorte/SwipeableCard?lib_id=753)
 
+[![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+
 ####New Floating Action Button!!!
 
 ![alt tag](http://i.giphy.com/3o8doUXxjOCwHw2GEo.gif)
