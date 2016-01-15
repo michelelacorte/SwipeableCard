@@ -70,11 +70,12 @@ Android API 14+
 ##CHANGELOG
 
 **v2.0.0**
-- Support all custom `CardView` Layout
+- Support all custom `CardView` Layout!!!
+- Improved `RecyclerView` animation
 - `Fab` button added
 - Fixed minor bug  for compatibility with API 14+
-- Added three `ImageView` button (see Customizable)
-- Added two `TextView` (see Customizable)
+- Added three `ImageView` button (see Customization)
+- Added two `TextView` (see Customization)
 - Added method `setCardRadius(int radius)` default 4
 
 Preview:
