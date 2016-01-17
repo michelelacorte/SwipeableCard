@@ -69,13 +69,17 @@ Android API 14+
 
 ##CHANGELOG
 
+**Coming Soon Version**
+- Added Attribute to XML
+- Swipe to dismiss function added
+
 **v2.0.0**
 - Support all custom `CardView` Layout!!!
 - Improved `RecyclerView` animation
 - `Fab` button added
 - Fixed minor bug  for compatibility with API 14+
-- Added three `ImageView` button (see Customization)
-- Added two `TextView` (see Customization)
+- Added three `ImageView` button (see [Customization](https://github.com/michelelacorte/SwipeableCard/blob/master/CUSTOMIZATION.md))
+- Added two `TextView` (see [Customization](https://github.com/michelelacorte/SwipeableCard/blob/master/CUSTOMIZATION.md))
 - Added method `setCardRadius(int radius)` default 4
 
 Preview:
