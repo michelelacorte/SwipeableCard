@@ -14,6 +14,10 @@
 
 [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
 
+####In Coming Soon Version Swipe to Dismiss!
+
+![alt tag](http://i.giphy.com/3o7rc2savJab4JExI4.gif)
+
 ####New Floating Action Button!!!
 
 ![alt tag](http://i.giphy.com/3o8doUXxjOCwHw2GEo.gif)
@@ -71,7 +75,7 @@ Android API 14+
 
 **Coming Soon Version**
 - Added Attribute to XML
-- Swipe to dismiss function added
+- Swipe to dismiss function added (see [Preview](http://i.giphy.com/3o7rc2savJab4JExI4.gif))
 
 **v2.0.0**
 - Support all custom `CardView` Layout!!!
