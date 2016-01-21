@@ -135,6 +135,12 @@ Method called by `OptionView.Builder()`
 
 Author: Michele Lacorte (micky1995g@gmail.com)
 
+##CONTRIBUTING
+
+If you want to contribute to the project you can open another Pull Request, or contact me by e-mail.
+
+Each proposal will be accepted!
+
 ##LICENSE
 
 ```
