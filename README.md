@@ -1,5 +1,6 @@
-# SwipeableCard
-##A simple implementation of swipe card like StreetView!!
+<h1 align="center">Swipeable Card</h1>
+
+<h2 align="center">A simple implementation of swipe card like StreetView!!</h1>
 
 <span class="badge-paypal"><a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=LY7EX8WMWPWV6" title="Donate to this project using Paypal"><img src="https://img.shields.io/badge/paypal-donate-yellow.svg" alt="PayPal donate button" /></a></span>
 [![Twitter](https://img.shields.io/badge/Twitter-@LacorteMichele-blue.svg?style=flat)](https://twitter.com/LacorteMichele)
@@ -13,6 +14,7 @@
 [![alt tag](http://www.android-gems.com/badge/michelelacorte/SwipeableCard.svg)](http://www.android-gems.com/lib/michelelacorte/SwipeableCard?lib_id=753)
 
 [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+
 
 ####In Coming Soon Version Swipe to Dismiss!
 
