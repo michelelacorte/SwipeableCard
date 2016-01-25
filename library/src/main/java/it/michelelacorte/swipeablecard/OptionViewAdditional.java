@@ -1,7 +1,11 @@
 package it.michelelacorte.swipeablecard;
 
+import android.support.annotation.ColorRes;
+import android.support.annotation.DrawableRes;
 import android.util.Log;
 import android.view.View;
+
+import org.jetbrains.annotations.NotNull;
 
 /**
  * Created by Michele on 12/12/2015.
@@ -36,7 +40,7 @@ public class OptionViewAdditional {
     private View.OnClickListener mOnClickListenerTextBtn2;
     private View.OnClickListener mOnClickListenerFab;
 
-    public OptionViewAdditional(Builder builder) {
+    public OptionViewAdditional(@NotNull Builder builder) {
         /**
          * Customizable Icon and Text
          */
@@ -170,15 +174,9 @@ public class OptionViewAdditional {
          * @param listener OnClickListener
          * @return
          */
-        public Builder setOnClickListenerFab(View.OnClickListener listener)
+        public Builder setOnClickListenerFab(@NotNull View.OnClickListener listener)
         {
-            if(listener == null)
-            {
-                Log.e("ListenerFab", "Impossible to set Listener Fab value to null! Please Check it");
-                throw new IllegalArgumentException("Impossible to set Listener Fab value to null! Please Check it");
-            }else {
-                mOnClickListenerFab = listener;
-            }
+            mOnClickListenerFab = listener;
             return this;
         }
 
@@ -187,7 +185,7 @@ public class OptionViewAdditional {
          * @param icon int
          * @return
          */
-        public Builder setFabIcon(int icon)
+        public Builder setFabIcon(@DrawableRes int icon)
         {
             if(icon <= 0)
             {
@@ -205,7 +203,7 @@ public class OptionViewAdditional {
          * @param color int
          * @return
          */
-        public Builder setFabColor(int color)
+        public Builder setFabColor(@ColorRes int color)
         {
             if(color <= 0)
             {
@@ -223,13 +221,8 @@ public class OptionViewAdditional {
          * @param listeners OnClickListener interface
          * @return
          */
-        public Builder setOnClickListenerTextButton(View.OnClickListener... listeners)
+        public Builder setOnClickListenerTextButton(@NotNull View.OnClickListener... listeners)
         {
-            if(listeners == null)
-            {
-                Log.e("ListenerTextButton", "Impossible to set Listener Button value to null! Please Check it");
-                throw new IllegalArgumentException("Impossible to set Listener Icon Button value to null! Please Check it");
-            }
             if(listeners.length > 2)
             {
                 Log.e("ListenerTextButton", "Impossible to set Listener Button value more than 2! Please Check it");
@@ -261,13 +254,8 @@ public class OptionViewAdditional {
          * @param listeners OnClickListener interface
          * @return
          */
-        public Builder setOnClickListenerIconButton(View.OnClickListener... listeners)
+        public Builder setOnClickListenerIconButton(@NotNull View.OnClickListener... listeners)
         {
-            if(listeners == null)
-            {
-                Log.e("ListenerIconButton", "Impossible to set Listener Button value to null! Please Check it");
-                throw new IllegalArgumentException("Impossible to set Listener Icon Button value to null! Please Check it");
-            }
             if(listeners.length > 3)
             {
                 Log.e("ListenerIconButton", "Impossible to set Listener Button value more than 3! Please Check it");
@@ -344,7 +332,7 @@ public class OptionViewAdditional {
          * @param color int
          * @return
          */
-        public Builder textColorButton(int... color)
+        public Builder textColorButton(@ColorRes int... color)
         {
             if(color.length > 2)
             {
@@ -379,7 +367,7 @@ public class OptionViewAdditional {
          * @param icon int
          * @return
          */
-        public Builder iconButton(int... icon)
+        public Builder iconButton(@DrawableRes int... icon)
         {
             if(icon.length > 3)
             {
@@ -422,7 +410,7 @@ public class OptionViewAdditional {
          * @param text String
          * @return
          */
-        public Builder textButton(String... text)
+        public Builder textButton(@NotNull String... text)
         {
             if(text.length > 2)
             {
@@ -578,6 +566,7 @@ public class OptionViewAdditional {
      * Return onClickListener  of Icon Button 1
      * @return onClickListener  of Icon Button 1
      */
+    @NotNull
     public View.OnClickListener getOnClickListenerIconBtn1() {
         return mOnClickListenerIconBtn1;
     }
@@ -586,6 +575,7 @@ public class OptionViewAdditional {
      * Return onClickListener  of Icon Button 2
      * @return onClickListener  of Icon Button 2
      */
+    @NotNull
     public View.OnClickListener getOnClickListenerIconBtn2() {
         return mOnClickListenerIconBtn2;
     }
@@ -594,6 +584,7 @@ public class OptionViewAdditional {
      * Return onClickListener  of Text Button 1
      * @return onClickListener  of Text Button 1
      */
+    @NotNull
     public View.OnClickListener getOnClickListenerTextBtn1() {
         return mOnClickListenerTextBtn1;
     }
@@ -602,6 +593,7 @@ public class OptionViewAdditional {
      * Return onClickListener  of Text Button 2
      * @return onClickListener  of Text Button 2
      */
+    @NotNull
     public View.OnClickListener getOnClickListenerTextBtn2() {
         return mOnClickListenerTextBtn2;
     }
@@ -610,6 +602,7 @@ public class OptionViewAdditional {
      * Return onClickListener  of Icon Button 1
      * @return onClickListener  of Icon  Button 1
      */
+    @NotNull
     public View.OnClickListener getOnClickListenerIconBtn3() {
         return mOnClickListenerIconBtn3;
     }
@@ -634,6 +627,7 @@ public class OptionViewAdditional {
      * Get OnClickListener for Floating Action Button
      * @return OnClickListener fab
      */
+    @NotNull
     public View.OnClickListener getOnClickListenerFab() {
         return mOnClickListenerFab;
     }

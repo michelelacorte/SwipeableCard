@@ -9,6 +9,8 @@ package it.michelelacorte.swipeablecard;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
 
+import org.jetbrains.annotations.NotNull;
+
 /**
  *  AnimationCard is an Interface for set-up animation.
  *  @author Michele Lacorte

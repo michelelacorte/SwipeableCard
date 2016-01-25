@@ -1,5 +1,6 @@
 package it.michelelacorte.swipeablecard;
 
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.Point;
 import android.os.CountDownTimer;
@@ -79,6 +80,7 @@ public class CustomCardAnimation {
      * Start animation and set card at start position
      * Do not modify this!
      */
+    @TargetApi(14)
     private void animationCustomCardStart()
     {
         final int height = getScreenSize(mContext);
@@ -97,6 +99,7 @@ public class CustomCardAnimation {
      * Down animation
      * Do not modify this!
      */
+    @TargetApi(14)
     public void animationCustomCardDown()
     {
         final int height = getScreenSize(mContext);
@@ -116,6 +119,7 @@ public class CustomCardAnimation {
      * Up animation
      * Do not modify this!
      */
+    @TargetApi(14)
     public void animationCustomCardUp()
     {
         final int height = getScreenSize(mContext);
@@ -134,7 +138,7 @@ public class CustomCardAnimation {
     /**
      * Get Size of Screen (Height)
      * @param context Context
-     * @return
+     * @return height of screen
      */
     private int getScreenSize(Context context)
     {

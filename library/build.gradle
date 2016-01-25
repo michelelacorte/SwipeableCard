@@ -2,7 +2,7 @@ apply plugin: 'com.android.library'
 apply plugin: 'com.jfrog.bintray'
 apply plugin: 'com.github.dcendents.android-maven'
 group = 'it.michelelacorte.swipeablecard'
-version = '2.0.0'
+version = '2.1.0'
 
 android {
     compileSdkVersion 23
@@ -12,7 +12,7 @@ android {
         minSdkVersion 14
         targetSdkVersion 23
         versionCode 1
-        versionName "2.0.0"
+        versionName "2.1.0"
     }
     buildTypes {
         release {
@@ -35,6 +35,7 @@ allprojects {
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
+    compile 'com.intellij:annotations:+@jar'
     compile 'com.android.support:appcompat-v7:23.1.1'
     compile 'com.android.support:cardview-v7:23.1.1'
     compile 'com.android.support:recyclerview-v7:23.1.1'

@@ -10,7 +10,6 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,8 +17,9 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
@@ -81,11 +81,11 @@ public class SwipeableCardAdapter extends RecyclerView.Adapter<SwipeableCardAdap
 
     /**
      * Animation Card at start layout, please do not modify this.
-     * @param card
-     * @param toolbar
+     * @param card card view instance
+     * @param toolbar toolbar instance
      */
     @Override
-    public void animationCardStart(final CardView card, final Toolbar toolbar){
+    public void animationCardStart(@NotNull final CardView card, @NotNull final Toolbar toolbar){
         new CountDownTimer(1, 1) {
             public void onTick(long millisUntilFinished) {
             }
@@ -108,11 +108,11 @@ public class SwipeableCardAdapter extends RecyclerView.Adapter<SwipeableCardAdap
 
     /**
      * Animation Card for down animation, please do not modify this.
-     * @param card
-     * @param toolbar
+     * @param card card view instance
+     * @param toolbar toolbar instance
      */
     @Override
-    public void animationCardDown(final CardView card, final Toolbar toolbar, final long duration){
+    public void animationCardDown(@NotNull final CardView card, @NotNull final Toolbar toolbar, final long duration){
         new CountDownTimer(1, 1) {
             public void onTick(long millisUntilFinished) {
             }
@@ -127,11 +127,11 @@ public class SwipeableCardAdapter extends RecyclerView.Adapter<SwipeableCardAdap
 
     /**
      * Animation Card for up animation, please do not modify this.
-     * @param card
-     * @param toolbar
+     * @param card card view instance
+     * @param toolbar toolbar instance
      */
     @Override
-    public void animationCardUp(final CardView card, final Toolbar toolbar, final long duration){
+    public void animationCardUp(@NotNull final CardView card,  final Toolbar toolbar, final long duration){
         new CountDownTimer(1, 1) {
             public void onTick(long millisUntilFinished) {
             }
@@ -147,7 +147,7 @@ public class SwipeableCardAdapter extends RecyclerView.Adapter<SwipeableCardAdap
 
     /**
      * Get number of option view.
-     * @return
+     * @return item count
      */
     @Override
     public int getItemCount() {

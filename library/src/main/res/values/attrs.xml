@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+    <!--
+    Michele Lacorte
+    Swipeable Card Custom Attr
+    -->
+    <declare-styleable name="SwipeableCard">
+        <!-- Set card radius -->
+        <attr name="sc_cardRadius" format="dimension"/>
+        <!-- Set animation duration -->
+        <attr name="sc_animDuration" format="float"/>
+        <!-- Set title on toolbar -->
+        <attr name="sc_title" format="string"/>
+        <!-- Set title color -->
+        <attr name="sc_titleColor" format="color"/>
+        <!-- Set image resource -->
+        <attr name="sc_image" format="integer"/>
+        <!-- Set sub title -->
+        <attr name="sc_subTitle" format="string"/>
+        <!-- Set toolbar color -->
+        <attr name="sc_toolbarColor" format="color"/>
+        <!-- Set text on SwipeableCard-->
+        <attr name="sc_text" format="string"/>
+        <!-- Set Swipe to dismiss on SwipeableCard-->
+        <attr name="sc_swipeToDismiss" format="boolean"/>
+    </declare-styleable>
+</resources>

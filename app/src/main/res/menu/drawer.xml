@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/SingleSwipe"
+            android:checked="false"
+            android:icon="@drawable/ic_chrome_reader_mode_black_24dp"
+            android:title="@string/single_swipe" />
+
+        <item
+            android:id="@+id/CustomSwipe"
+            android:icon="@drawable/ic_class_black_24dp"
+            android:checked="false"
+            android:title="@string/custom_swipe" />
+
+        <item
+           android:id="@+id/RecyclerSwipe"
+           android:checked="false"
+            android:icon="@drawable/ic_format_list_bulleted_black_24dp"
+           android:title="@string/recycler_swipe" />
+
+
+        <item
+            android:id="@+id/DismissSwipe"
+            android:icon="@drawable/ic_pan_tool_black_24dp"
+            android:checked="false"
+            android:title="@string/dismiss_swipe" />
+
+        <item
+            android:id="@+id/OtherSwipe"
+            android:icon="@drawable/ic_extension_black_24dp"
+            android:checked="false"
+            android:title="@string/other_swipe" />
+
+    </group>
+
+
+    <item android:title="Communicate">
+        <menu>
+            <group android:checkableBehavior="single">
+
+                <item
+                    android:id="@+id/About"
+                    android:checked="false"
+                    android:icon="@drawable/ic_info_black_24dp"
+                    android:title="@string/about" />
+
+                <item
+                    android:id="@+id/Donate"
+                    android:checked="false"
+                    android:icon="@drawable/ic_credit_card_black_24dp"
+                    android:title="@string/donate" />
+
+                <item
+                    android:id="@+id/Share"
+                    android:checked="false"
+                    android:icon="@drawable/ic_share_black_24dp"
+                    android:title="@string/share" />
+
+            </group>
+        </menu>
+    </item>
+
+
+</menu>
