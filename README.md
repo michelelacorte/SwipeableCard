@@ -78,6 +78,7 @@ Android API 14+
 **Coming Soon Version**
 - Added Attribute to XML
 - Swipe to dismiss function added (see [Preview](http://i.giphy.com/3o7rc2savJab4JExI4.gif))
+- Fixed `RecyclerView` blinking
 
 **v2.0.0**
 - Support all custom `CardView` Layout!!!
