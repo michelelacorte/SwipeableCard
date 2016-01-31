@@ -78,6 +78,7 @@ Android API 14+
 **Coming Soon Version**
 - Added Attribute to XML
 - New version of App demo (release on Play Store)
+- Multiple instance of `SwipeableCard` in the same class with `init(..)` method
 - Improved `OptionView` and `SwipeableCard` class
 - Swipe to dismiss function added (see [Preview](http://i.giphy.com/3o7rc2savJab4JExI4.gif))
 - Fixed `RecyclerView` blinking
