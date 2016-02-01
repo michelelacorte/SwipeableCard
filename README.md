@@ -44,7 +44,7 @@
 
 Swipeable Card is pushed to JCenter, so you just need to add the following dependency to your `build.gradle`.
 ```
-compile 'it.michelelacorte.swipeablecard:library:2.0.0'
+compile 'it.michelelacorte.swipeablecard:library:2.1.0'
 ```
 
 In alternative you can use AAR repository with:
@@ -63,7 +63,7 @@ allprojects {
 And add this dependecies
 
 ```
-compile 'it.michelelacorte.swipeablecard:library:2.0.0@aar'
+compile 'it.michelelacorte.swipeablecard:library:2.1.0@aar'
 ```
 
 ##DOCUMENTATION
@@ -85,8 +85,8 @@ Android API 14+
 ##CHANGELOG
 
 **Coming Soon Version**
-- Added Attribute to XML (see [Preview](https://github.com/michelelacorte/SwipeableCard/blob/master/ATTRS.md))
-- New version of App demo (release on Play Store)
+- Added Attribute to XML (see [Attribute Table](https://github.com/michelelacorte/SwipeableCard/blob/master/ATTRS.md))
+- New version of App demo (release on [Play Store](https://play.google.com/store/apps/details?id=it.michelelacorte.exampleswipeablecard))
 - Multiple instance of `SwipeableCard` in the same class with `init(..)` method
 - Improved `SwipeableCard` class
 - Improved `OptionView` and `OptionViewAdditional` and other class with annotations and more bug fix
