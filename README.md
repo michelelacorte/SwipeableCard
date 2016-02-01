@@ -87,7 +87,7 @@ Android API 14+
 **v2.1.0**
 - Added Attribute to XML (See [Attribute Table](https://github.com/michelelacorte/SwipeableCard/blob/master/ATTRS.md))
 - New version of App demo (release on [Play Store](https://play.google.com/store/apps/details?id=it.michelelacorte.exampleswipeablecard))
-- Multiple instance of `SwipeableCard` in the same class with `init(..)` method (See [Multiple Instance](https://github.com/michelelacorte/SwipeableCard/blob/master/SINGLECARD.md)
+- Multiple instance of `SwipeableCard` in the same class with `init(..)` method (See [Multiple Instance](https://github.com/michelelacorte/SwipeableCard/blob/master/SINGLECARD.md))
 - Improved `SwipeableCard` class
 - Improved `OptionView` and `OptionViewAdditional` and other class with annotations and more bug fix
 - Swipe to dismiss function added (see [Preview](http://i.giphy.com/3o7rc2savJab4JExI4.gif))
