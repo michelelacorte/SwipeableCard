@@ -11,3 +11,15 @@
 | sc_toolbarColor | color | Set color of toolbar
 | sc_text | string | Set a text inside Swipeable Card
 | sc_swipeToDismiss | boolean | Set swipe to dismiss feature on Swipeable Card
+
+##USAGE
+
+    <it.michelelacorte.swipeablecard.SwipeableCard
+        xmlns:SwipeableCard="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/swipeCard"
+        SwipeableCard:sc_animDuration="200"
+        SwipeableCard:sc_titleColor="@color/colorPrimary"
+        //And so on>
+    </it.michelelacorte.swipeablecard.SwipeableCard>
