@@ -15,6 +15,13 @@
 
 [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
 
+##EXAMPLE
+
+####Swipeable Card is on Google Play! (Coming Soon)
+
+<a href="null">
+<img alt="Get it on Google Play" src="http://steverichey.github.io/google-play-badge-svg/img/en_get.svg" />
+</a>
 
 ####In Coming Soon Version Swipe to Dismiss!
 
