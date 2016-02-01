@@ -85,7 +85,7 @@ Android API 14+
 ##CHANGELOG
 
 **Coming Soon Version**
-- Added Attribute to XML (see [Preview](https://github.com/michelelacorte/SwipeableCard/blob/master/ATTRS.md)
+- Added Attribute to XML (see [Preview](https://github.com/michelelacorte/SwipeableCard/blob/master/ATTRS.md))
 - New version of App demo (release on Play Store)
 - Multiple instance of `SwipeableCard` in the same class with `init(..)` method
 - Improved `SwipeableCard` class
