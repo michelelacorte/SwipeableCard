@@ -20,6 +20,6 @@
         android:layout_height="match_parent"
         android:id="@+id/swipeCard"
         SwipeableCard:sc_animDuration="200"
-        SwipeableCard:sc_titleColor="@color/colorPrimary"
-        //And so on>
+        SwipeableCard:sc_titleColor="@color/colorPrimary">
+        <!-- And so on -->
     </it.michelelacorte.swipeablecard.SwipeableCard>
