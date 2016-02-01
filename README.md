@@ -17,7 +17,7 @@
 
 ##EXAMPLE
 
-####Swipeable Card is on Google Play! (Coming Soon)
+####Swipeable Card is on Google Play!!!
 
 <a href="https://play.google.com/store/apps/details?id=it.michelelacorte.exampleswipeablecard">
 <img alt="Get it on Google Play" src="http://steverichey.github.io/google-play-badge-svg/img/en_get.svg" />
