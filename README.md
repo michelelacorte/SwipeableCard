@@ -15,6 +15,13 @@
 
 [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
 
+##EXAMPLE
+
+####Swipeable Card is on Google Play!!!
+
+<a href="https://play.google.com/store/apps/details?id=it.michelelacorte.exampleswipeablecard">
+<img alt="Get it on Google Play" src="http://steverichey.github.io/google-play-badge-svg/img/en_get.svg" />
+</a>
 
 ####In Coming Soon Version Swipe to Dismiss!
 
@@ -69,6 +76,8 @@ compile 'it.michelelacorte.swipeablecard:library:2.0.0@aar'
 
 - [Any Card Layout Example](https://github.com/michelelacorte/SwipeableCard/blob/master/ANYCARD.md)
 
+- [Attribute Table](https://github.com/michelelacorte/SwipeableCard/blob/master/ATTRS.md)
+
 ##SYSTEM REQUIREMENT
 
 Android API 14+
@@ -76,7 +85,11 @@ Android API 14+
 ##CHANGELOG
 
 **Coming Soon Version**
-- Added Attribute to XML
+- Added Attribute to XML (see [Preview](https://github.com/michelelacorte/SwipeableCard/blob/master/ATTRS.md))
+- New version of App demo (release on Play Store)
+- Multiple instance of `SwipeableCard` in the same class with `init(..)` method
+- Improved `SwipeableCard` class
+- Improved `OptionView` and `OptionViewAdditional` and other class with annotations and more bug fix
 - Swipe to dismiss function added (see [Preview](http://i.giphy.com/3o7rc2savJab4JExI4.gif))
 - Fixed `RecyclerView` blinking
 
