@@ -82,6 +82,10 @@ compile 'it.michelelacorte.swipeablecard:library:2.1.0@aar'
 
 Android API 14+
 
+##STATUS
+
+![project maintained](https://img.shields.io/badge/project-maintained-green.svg)
+
 ##CHANGELOG
 
 **v2.1.0**
