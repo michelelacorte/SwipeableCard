@@ -84,7 +84,7 @@ Android API 14+
 
 ##STATUS
 
-![project maintained](https://img.shields.io/badge/project-maintained-green.svg)
+![project maintained](https://img.shields.io/badge/Project-Maintained-green.svg)
 
 ##CHANGELOG
 
