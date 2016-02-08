@@ -25,7 +25,7 @@
 
 ####And Amazon Store
 
-<a href="null">
+<a href="http://www.amazon.it/Michele-Lacorte-Swipeable-Card-Demo/dp/B01BKGSSSS/ref=sr_1_1?s=mobile-apps&ie=UTF8&qid=1454943441&sr=1-1&keywords=swipeable+card+demo">
 <img alt="Get it on Amazon Store" src="http://s29.postimg.org/lriupxrl3/amazon_apps_link.png" />
 </a>
 
