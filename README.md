@@ -20,7 +20,13 @@
 ####Swipeable Card is on Google Play!!!
 
 <a href="https://play.google.com/store/apps/details?id=it.michelelacorte.exampleswipeablecard">
-<img alt="Get it on Google Play" src="http://steverichey.github.io/google-play-badge-svg/img/en_get.svg" />
+<img alt="Get it on Google Play" src="http://s13.postimg.org/543fm7tuf/google_play.png" />
+</a>
+
+####And Amazon Store
+
+<a href="null">
+<img alt="Get it on Amazon Store" src="http://s29.postimg.org/lriupxrl3/amazon_apps_link.png" />
 </a>
 
 ####[See video demo here](https://www.youtube.com/watch?v=81gAqOm1m5w)
