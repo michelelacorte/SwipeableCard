@@ -23,6 +23,8 @@
 <img alt="Get it on Google Play" src="http://steverichey.github.io/google-play-badge-svg/img/en_get.svg" />
 </a>
 
+####[See video demo here](https://www.youtube.com/watch?v=81gAqOm1m5w)
+
 ####Swipe to Dismiss!
 
 ![alt tag](http://i.giphy.com/3o7rc2savJab4JExI4.gif)
