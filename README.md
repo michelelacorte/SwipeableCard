@@ -31,7 +31,11 @@
 
 ####[See video demo here](https://www.youtube.com/watch?v=81gAqOm1m5w)
 
-####Swipe to Dismiss!
+####Maps Card (Coming Soon Version)!!
+
+![alt tag](http://i.giphy.com/26FPDYox55jE0UBVu.gif)
+
+####Swipe to Dismiss
 
 ![alt tag](http://i.giphy.com/3o7rc2savJab4JExI4.gif)
 
@@ -97,7 +101,7 @@ Android API 14+
 ##CHANGELOG
 
 **Coming Soon Version**
-- Maps Fragment added (with many method)!
+- Maps Fragment added (with many method see [Preview](http://i.giphy.com/26FPDYox55jE0UBVu.gif))!
 - Improved hierarchy type of Card
 - Improved `Builder()` constructor
 
