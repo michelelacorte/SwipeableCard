@@ -96,6 +96,11 @@ Android API 14+
 
 ##CHANGELOG
 
+**Coming Soon Version**
+- Maps Fragment added (with many method)!
+- Improved hierarchy type of Card
+- Improved `Builder()` constructor
+
 **v2.1.0**
 - Added Attribute to XML (see [Attribute Table](https://github.com/michelelacorte/SwipeableCard/blob/master/ATTRS.md))
 - New version of App demo (release on [Play Store](https://play.google.com/store/apps/details?id=it.michelelacorte.exampleswipeablecard))
