@@ -102,6 +102,7 @@ Android API 14+
 
 **Coming Soon Version**
 - Maps Fragment added (with many method see [Preview](http://i.giphy.com/26FPDYox55jE0UBVu.gif))!
+- Maps single marker mode and multiple marker mode support
 - Improved hierarchy type of Card
 - Improved `Builder()` constructor
 - Fixed issue in `OptioViewAdditional`
