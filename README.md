@@ -104,6 +104,7 @@ Android API 14+
 - Maps Fragment added (with many method see [Preview](http://i.giphy.com/26FPDYox55jE0UBVu.gif))!
 - Improved hierarchy type of Card
 - Improved `Builder()` constructor
+- Fixed issue in `OptioViewAdditional`
 
 **v2.1.0**
 - Added Attribute to XML (see [Attribute Table](https://github.com/michelelacorte/SwipeableCard/blob/master/ATTRS.md))
