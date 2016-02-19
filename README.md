@@ -106,6 +106,7 @@ Android API 14+
 - Improved hierarchy type of Card
 - Improved `Builder()` constructor
 - Fixed issue in `OptioViewAdditional`
+- Added documentation to GitHub repo
 
 **v2.1.0**
 - Added Attribute to XML (see [Attribute Table](https://github.com/michelelacorte/SwipeableCard/blob/master/ATTRS.md))
