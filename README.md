@@ -33,7 +33,9 @@
 
 ####Maps Card (Coming Soon Version)!!
 
-![alt tag](http://i.giphy.com/26FPDYox55jE0UBVu.gif)
+![alt tag](http://i.giphy.com/26FPDYox55jE0UBVu.gif) 
+
+![alt tag](http://s2.postimg.org/i7te06hqx/Screenshot_2016_02_20_21_44_02.png)
 
 ####Swipe to Dismiss
 
@@ -128,10 +130,6 @@ Android API 14+
 - Added three `ImageView` button (see [Customization](https://github.com/michelelacorte/SwipeableCard/blob/master/CUSTOMIZATION.md))
 - Added two `TextView` (see [Customization](https://github.com/michelelacorte/SwipeableCard/blob/master/CUSTOMIZATION.md))
 - Added method `setCardRadius(int radius)` default 4
-
-Preview:
-
-![alt tag](http://s30.postimg.org/hkt4zmcht/Screenshot_2015_12_12_01_43_35.png)
 
 **v1.0.1**
 - Support API 14+
