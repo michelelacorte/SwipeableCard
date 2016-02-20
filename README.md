@@ -88,6 +88,8 @@ compile 'it.michelelacorte.swipeablecard:library:2.1.0@aar'
 
 - [Any Card Layout Example](https://github.com/michelelacorte/SwipeableCard/blob/master/ANYCARD.md)
 
+- [Maps Card Example](https://github.com/michelelacorte/SwipeableCard/blob/master/MAPS.md)
+
 - [Attribute Table](https://github.com/michelelacorte/SwipeableCard/blob/master/ATTRS.md)
 
 ##SYSTEM REQUIREMENT
@@ -107,6 +109,7 @@ Android API 14+
 - Improved `Builder()` constructor
 - Fixed issue in `OptioViewAdditional`
 - Added documentation to GitHub repo
+- Version 1.1 of Application Demo
 
 **v2.1.0**
 - Added Attribute to XML (see [Attribute Table](https://github.com/michelelacorte/SwipeableCard/blob/master/ATTRS.md))
