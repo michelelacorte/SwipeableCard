@@ -31,7 +31,7 @@
 
 ####[See video demo here](https://www.youtube.com/watch?v=81gAqOm1m5w)
 
-####Maps Card (Coming Soon Version)!!
+####Maps Card!!
 
 ![alt tag](http://i.giphy.com/26FPDYox55jE0UBVu.gif) 
 
@@ -58,7 +58,7 @@
 
 Swipeable Card is pushed to JCenter, so you just need to add the following dependency to your `build.gradle`.
 ```groovy
-compile 'it.michelelacorte.swipeablecard:library:2.1.0'
+compile 'it.michelelacorte.swipeablecard:library:2.2.0'
 ```
 
 In alternative you can use AAR repository with:
@@ -77,7 +77,7 @@ allprojects {
 And add this dependecies
 
 ```groovy
-compile 'it.michelelacorte.swipeablecard:library:2.1.0@aar'
+compile 'it.michelelacorte.swipeablecard:library:2.2.0@aar'
 ```
 
 ##DOCUMENTATION
@@ -104,7 +104,7 @@ Android API 14+
 
 ##CHANGELOG
 
-**Coming Soon Version**
+**v2.2.0**
 - Maps Fragment added (with many method see [Preview](http://i.giphy.com/26FPDYox55jE0UBVu.gif))!
 - Maps mode in `RecyclerView` SwipeableCard
 - Maps single marker mode and multiple marker mode support
