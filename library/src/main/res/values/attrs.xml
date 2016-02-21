@@ -23,5 +23,7 @@
         <attr name="sc_text" format="string"/>
         <!-- Set Swipe to dismiss on SwipeableCard-->
         <attr name="sc_swipeToDismiss" format="boolean"/>
+        <!-- Set Auto Animation on SwipeableCard-->
+        <attr name="sc_autoAnimation" format="boolean"/>
     </declare-styleable>
 </resources>

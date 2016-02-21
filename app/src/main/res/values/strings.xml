@@ -2,15 +2,17 @@
     <string name="app_name">Swipeable Card Demo</string>
     <string name="action_settings">Settings</string>
     <string name="single_swipe">Single</string>
+    <string name="single_swipe_not_anim">Single Swipe Gesture</string>
     <string name="custom_swipe">Custom</string>
     <string name="recycler_swipe">RecyclerView</string>
     <string name="dismiss_swipe">Dismissable</string>
     <string name="other_swipe">Other Layout</string>
+    <string name="credit_card">Credit Card</string>
     <string name="about">About</string>
     <string name="donate">Donate</string>
     <string name="share">Share</string>
     <string name="map_swipe">Maps</string>
-    <string name="dialog_message">This library is totally free and is available on <a href="https://github.com/michelelacorte/SwipeableCard">GitHub</a>.\nThe library is licensed under <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache</a> license.\n\nCopyright 2016 Michele Lacorte.</string>
+    <string name="dialog_message">This library is totally free and is available on <a href="https://github.com/michelelacorte/SwipeableCard">GitHub</a>.\nThe library is licensed under <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache</a> license.\n\nApplication Version 1.2\nLibrary Version 2.3.0\n\nCopyright 2016 Michele Lacorte.</string>
     <string name="drawer_open">Open</string>
     <string name="drawer_close">Close</string>
     <string name="donate_message">If you like this library, please help developer!\n\n<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=LY7EX8WMWPWV6">Donate</a></string>

@@ -77,4 +77,10 @@ public interface Card {
      * @param radius float rapresent radius
      */
     Card setCardRadius(float radius);
+
+    /**
+     * Set auto animation of SwipeableCard
+     * @param autoAnimation boolean auto animation, default true
+     */
+    Card setAutoAnimation(boolean autoAnimation);
 }
