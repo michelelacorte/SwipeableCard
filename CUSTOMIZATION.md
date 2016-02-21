@@ -6,6 +6,7 @@ Use SwipeableCard, and than you can customize card with `OptionViewAddional.Buil
 
 ```
         OptionView.setOptionView(new OptionView.Builder()
+                .normalCard()
                 //.image(R.drawable.image)
                 .text("Text, a lot of Text, a lot of Text, a lot of Text, a lot of Text, a lot of Text, a lot of Text, a lot of Text, a lot of Text, a lot of Text, a lot of Text," +
                         " a lot of Text, a lot of Text, a lot of Text, a lot of Text, a lot of Text, a lot of Text")
