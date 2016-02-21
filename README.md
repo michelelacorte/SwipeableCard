@@ -57,13 +57,13 @@
 ##USAGE
 
 Swipeable Card is pushed to JCenter, so you just need to add the following dependency to your `build.gradle`.
-```
+```groovy
 compile 'it.michelelacorte.swipeablecard:library:2.1.0'
 ```
 
 In alternative you can use AAR repository with:
 
-```
+```groovy
 allprojects {
     repositories {
         maven { url "https://dl.bintray.com/michelelacorte/maven/" }
@@ -76,7 +76,7 @@ allprojects {
 
 And add this dependecies
 
-```
+```groovy
 compile 'it.michelelacorte.swipeablecard:library:2.1.0@aar'
 ```
 
@@ -186,7 +186,7 @@ Each proposal will be accepted!
 ##LICENSE
 
 ```
-Copyright 2015 Michele Lacorte
+Copyright 2016 Michele Lacorte
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
