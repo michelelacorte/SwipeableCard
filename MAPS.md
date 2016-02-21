@@ -21,3 +21,5 @@ Example instance of single marker and multiple marker card
                 .toolbarListener(toolbarListener)
                 .build();
 ```
+
+For full method and description see [documentation](http://michelelacorte.github.io/SwipeableCard/docs/javadoc/index.html)
