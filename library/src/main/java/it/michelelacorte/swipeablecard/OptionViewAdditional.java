@@ -8,6 +8,8 @@ import android.view.View;
 import org.jetbrains.annotations.NotNull;
 
 /**
+ * OptionViewAdditional provide all custom object settable to SwipeableCard.
+ * Have a Builder pattern constructor to set-up object.
  * Created by Michele on 12/12/2015.
  */
 public class OptionViewAdditional {
@@ -172,7 +174,6 @@ public class OptionViewAdditional {
         /**
          * Set OnClickListener for Fab Button
          * @param listener OnClickListener
-         * @return
          */
         public Builder setOnClickListenerFab(@NotNull View.OnClickListener listener)
         {
@@ -183,7 +184,6 @@ public class OptionViewAdditional {
         /**
          * Set Fab Icon
          * @param icon int
-         * @return
          */
         public Builder setFabIcon(@DrawableRes int icon)
         {
@@ -201,7 +201,6 @@ public class OptionViewAdditional {
         /**
          * Set Fab Color
          * @param color int
-         * @return
          */
         public Builder setFabColor(@ColorRes int color)
         {
@@ -219,7 +218,6 @@ public class OptionViewAdditional {
         /**
          * Set OnClickListener for Text Button
          * @param listeners OnClickListener interface
-         * @return
          */
         public Builder setOnClickListenerTextButton(@NotNull View.OnClickListener... listeners)
         {
@@ -252,7 +250,6 @@ public class OptionViewAdditional {
         /**
          * Set OnClickListener for Icon Button
          * @param listeners OnClickListener interface
-         * @return
          */
         public Builder setOnClickListenerIconButton(@NotNull View.OnClickListener... listeners)
         {
@@ -294,7 +291,6 @@ public class OptionViewAdditional {
         /**
          * Set Text Size
          * @param size float
-         * @return
          */
         public Builder textSize(float... size)
         {
@@ -330,7 +326,6 @@ public class OptionViewAdditional {
         /**
          * Set Text Color of Button Text
          * @param color int
-         * @return
          */
         public Builder textColorButton(@ColorRes int... color)
         {
@@ -365,7 +360,6 @@ public class OptionViewAdditional {
         /**
          * Set Icon on Icon Button
          * @param icon int
-         * @return
          */
         public Builder iconButton(@DrawableRes int... icon)
         {
@@ -408,7 +402,6 @@ public class OptionViewAdditional {
         /**
          * Set Text on Text Button
          * @param text String
-         * @return
          */
         public Builder textButton(@NotNull String... text)
         {
@@ -443,7 +436,6 @@ public class OptionViewAdditional {
 
         /**
          * Constructor build()
-         * @return
          */
         public OptionViewAdditional build() {
             return new OptionViewAdditional(this);

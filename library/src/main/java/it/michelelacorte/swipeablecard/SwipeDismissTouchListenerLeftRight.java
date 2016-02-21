@@ -1,6 +1,7 @@
 package it.michelelacorte.swipeablecard;
 
 /**
+ * SwipeDismissTouchListenerLeftRight is a class that provide swipe to dismiss functionality
  * Created by Michele on 08/01/2016.
  */
 import android.animation.Animator;

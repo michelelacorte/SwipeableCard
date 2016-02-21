@@ -9,7 +9,8 @@
     <string name="about">About</string>
     <string name="donate">Donate</string>
     <string name="share">Share</string>
-    <string name="dialog_message">This library is totally free and is available on <a href="https://github.com/michelelacorte/SwipeableCard">GitHub</a>.\nThe library is licensed under <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache</a> license.\n\nCopyright 2015 Michele Lacorte.</string>
+    <string name="map_swipe">Maps</string>
+    <string name="dialog_message">This library is totally free and is available on <a href="https://github.com/michelelacorte/SwipeableCard">GitHub</a>.\nThe library is licensed under <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache</a> license.\n\nCopyright 2016 Michele Lacorte.</string>
     <string name="drawer_open">Open</string>
     <string name="drawer_close">Close</string>
     <string name="donate_message">If you like this library, please help developer!\n\n<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=LY7EX8WMWPWV6">Donate</a></string>

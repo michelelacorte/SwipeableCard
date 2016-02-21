@@ -34,6 +34,12 @@
             android:checked="false"
             android:title="@string/other_swipe" />
 
+        <item
+            android:id="@+id/MapSwipe"
+            android:icon="@drawable/ic_map_black_24dp"
+            android:checked="false"
+            android:title="@string/map_swipe" />
+
     </group>
 
 

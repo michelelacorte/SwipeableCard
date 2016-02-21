@@ -15,8 +15,13 @@ import android.support.v7.widget.Toolbar;
 import android.text.method.LinkMovementMethod;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.CompoundButton;
+import android.widget.RadioButton;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.android.gms.maps.model.LatLng;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,6 +39,9 @@ public class MainActivity extends AppCompatActivity {
     ActionBarDrawerToggle mDrawerToggle;
     DrawerLayout drawerLayout;
     CardView cardOther;
+    RadioButton singleMarker;
+    RadioButton multipleMarker;
+    RelativeLayout radioGroup;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,6 +93,7 @@ public class MainActivity extends AppCompatActivity {
         };
 
         final OptionView singleSwipe = new OptionView.Builder()
+                .normalCard()
                 .text("Text, a lot of Text, a lot of Text, a lot of Text, a lot of Text, a lot of Text, a lot of Text, a lot of Text, a lot of Text, a lot of Text, a lot of Text," +
                         " a lot of Text, a lot of Text, a lot of Text, a lot of Text, a lot of Text, a lot of Text")
                 .title("Single Card")
@@ -98,6 +107,7 @@ public class MainActivity extends AppCompatActivity {
                 .build();
 
         final OptionView customSwipe = new OptionView.Builder()
+                .normalCard()
                 .image(R.drawable.image)
                 .title("Custom Card")
                 .menuItem(R.menu.menu_main)
@@ -114,6 +124,7 @@ public class MainActivity extends AppCompatActivity {
                 .build();
 
         final OptionView dismissableSwipe = new OptionView.Builder()
+                .normalCard()
                 .image(R.drawable.image)
                 .title("Dismissable Card")
                 .menuItem(R.menu.menu_main)
@@ -127,12 +138,32 @@ public class MainActivity extends AppCompatActivity {
                         .build())
                 .build();
 
+
+        final OptionView mapSwipeSingleMarker = new OptionView.Builder().mapsCard()
+                .title("Maps Card")
+                .setLocation(44.4937615, 11.3430542, "MyMarker")
+                .setZoom(10f)
+                .withStreetName(true)
+                .menuItem(R.menu.menu_main)
+                .toolbarListener(toolbarListener)
+                .build();
+
+        final OptionView mapSwipeMultipleMarker = new OptionView.Builder().mapsCard()
+                .title("Maps Card")
+                .setLocation(new LatLng(44.48, 11.33), new LatLng(43.45, 11.32), new LatLng(45.70, 10.11))
+                .menuItem(R.menu.menu_main)
+                .toolbarListener(toolbarListener)
+                .build();
+
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         cardOther = (CardView) findViewById(R.id.cardOther);
         swipeableCard = (SwipeableCard) findViewById(R.id.swipeCard);
         rv = (RecyclerView) findViewById(R.id.rv);
+        singleMarker = (RadioButton) findViewById(R.id.singleMarker);
+        multipleMarker = (RadioButton) findViewById(R.id.multipleMarker);
+        radioGroup = (RelativeLayout) findViewById(R.id.radioGroup);
 
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.navigation_view);
@@ -144,6 +175,7 @@ public class MainActivity extends AppCompatActivity {
                         /**
                          * Example of Single Swipeable Card.
                          */
+                        radioGroup.setVisibility(View.GONE);
                         rv.setVisibility(View.GONE);
                         cardOther.setVisibility(View.GONE);
                         swipeableCard.init(getApplicationContext(), singleSwipe);
@@ -154,13 +186,13 @@ public class MainActivity extends AppCompatActivity {
                         /**
                          * Example of Other Card Layout.
                          */
+                        radioGroup.setVisibility(View.GONE);
                         rv.setVisibility(View.GONE);
-                        swipeableCard.setVisibility(View.INVISIBLE);
+                        swipeableCard.setVisibility(View.GONE);
                         cardOther.setVisibility(View.VISIBLE);
                         final CustomCardAnimation cardAnim = new CustomCardAnimation(getApplicationContext(), cardOther, 200);
                         cardOther.setOnClickListener(new View.OnClickListener() {
                             boolean swipeUp = false;
-
                             @Override
                             public void onClick(View v) {
                                 if (!swipeUp) {
@@ -178,16 +210,51 @@ public class MainActivity extends AppCompatActivity {
                         /**
                          * Custom Card View Example
                          */
+                        radioGroup.setVisibility(View.GONE);
                         cardOther.setVisibility(View.GONE);
                         rv.setVisibility(View.GONE);
                         swipeableCard.init(getApplicationContext(), customSwipe);
                         swipeableCard.setVisibility(View.VISIBLE);
                         drawerLayout.closeDrawers();
                         break;
+                    case R.id.MapSwipe:
+                        radioGroup.setVisibility(View.VISIBLE);
+                        cardOther.setVisibility(View.GONE);
+                        rv.setVisibility(View.GONE);
+                        multipleMarker.setChecked(false);
+                        swipeableCard.init(getApplicationContext(), mapSwipeSingleMarker);
+                        swipeableCard.setVisibility(View.VISIBLE);
+                        singleMarker.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                            @Override
+                            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                                swipeableCard.setVisibility(View.GONE);
+                                if (singleMarker.isChecked()) {
+                                    multipleMarker.setChecked(false);
+                                    swipeableCard.init(getApplicationContext(), mapSwipeSingleMarker);
+                                    swipeableCard.setVisibility(View.VISIBLE);
+                                }
+                            }
+                        });
+                        multipleMarker.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                            @Override
+                            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                                swipeableCard.setVisibility(View.GONE);
+                                if(multipleMarker.isChecked()) {
+                                    singleMarker.setChecked(false);
+                                    swipeableCard.init(getApplicationContext(), mapSwipeMultipleMarker);
+                                    swipeableCard.setVisibility(View.VISIBLE);
+                                }
+                            }
+                        });
+                        drawerLayout.closeDrawers();
+                        break;
+
+
                     case R.id.DismissSwipe:
                         /**
                          * Example of Dismissable Swipeable Card.
                          */
+                        radioGroup.setVisibility(View.GONE);
                         cardOther.setVisibility(View.GONE);
                         rv.setVisibility(View.GONE);
                         swipeableCard.init(getApplicationContext(), dismissableSwipe);
@@ -199,6 +266,7 @@ public class MainActivity extends AppCompatActivity {
                          * Example of Recycler View Swipeable Card.
                          */
                         //Set layout HORIZONTAL
+                        radioGroup.setVisibility(View.GONE);
                         llm = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
                         rv.setLayoutManager(llm);
 
@@ -216,6 +284,7 @@ public class MainActivity extends AppCompatActivity {
                             }
                         };
                         optionViews.add(new OptionView.Builder()
+                                .normalCard()
                                 .image(R.drawable.image)
                                 .title("TITLE")
                                 .colorTitle(R.color.colorPrimary)
@@ -230,6 +299,7 @@ public class MainActivity extends AppCompatActivity {
                                         .build())
                                 .build());
                         optionViews.add(new OptionView.Builder()
+                                .normalCard()
                                 .text("Text, a lot of Text, a lot of Text, a lot of Text, a lot of Text, a lot of Text, a lot of Text, a lot of Text, a lot of Text, a lot of Text, a lot of Text," +
                                         " a lot of Text, a lot of Text, a lot of Text, a lot of Text, a lot of Text, a lot of Text")
                                 .title("TITLE")
@@ -239,6 +309,7 @@ public class MainActivity extends AppCompatActivity {
                                 .setCardRadius(40) //Optional, default 4
                                 .build());
                         optionViews.add(new OptionView.Builder()
+                                .normalCard()
                                 .subTitle("Sub Title!!!")
                                 .image(R.drawable.image)
                                 .title("TITLE")
@@ -250,6 +321,22 @@ public class MainActivity extends AppCompatActivity {
                                                 android.R.drawable.ic_menu_call,
                                                 android.R.drawable.ic_menu_delete)
                                         .build())
+                                .build());
+
+                        optionViews.add(new OptionView.Builder().mapsCard()
+                                .title("Maps Card")
+                                .setLocation(44.4937615, 11.3430542, "MyMarker")
+                                .setZoom(10f)
+                                .withStreetName(true)
+                                .menuItem(R.menu.menu_main)
+                                .toolbarListener(toolbarListener)
+                                .build());
+
+                        optionViews.add(new OptionView.Builder().mapsCard()
+                                .title("Maps Card")
+                                .setLocation(new LatLng(44.48, 11.33), new LatLng(43.45, 11.32), new LatLng(45.70, 10.11))
+                                .menuItem(R.menu.menu_main)
+                                .toolbarListener(toolbarListener)
                                 .build());
 
                         //Set custom adapter.

@@ -9,6 +9,8 @@ import android.view.Display;
 import android.view.WindowManager;
 
 /**
+ * CustomCardAnimation provide animation when use Custom Layout of CardView and you have to get
+ * bottom up animation
  * Created by Michele on 11/12/2015.
  */
 
@@ -17,6 +19,7 @@ import android.view.WindowManager;
  * all card layout
  * @author Michele Lacorte
  */
+@SuppressWarnings("unused")
 public class CustomCardAnimation {
     private Context mContext;
     private CardView mCardView;

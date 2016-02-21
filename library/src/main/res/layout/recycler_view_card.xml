@@ -36,6 +36,24 @@
                 android:visibility="gone"/>
 
             <RelativeLayout
+                android:id="@+id/relativeMaps"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="0dp">
+
+                <com.google.android.gms.maps.MapView
+                    android:name="com.google.android.gms.maps.MapFragment"
+                    android:id="@+id/mapLite"
+                    android:layout_width="wrap_content"
+                    android:layout_height="250dp"
+                    app:liteMode="true"
+                    app:mapType="normal"
+                    android:visibility="gone"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/relativeNormal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="16dp">
@@ -55,6 +73,16 @@
                     android:textSize="20sp" />
 
             </RelativeLayout>
+
+            <TextView
+                android:padding="8dp"
+                android:id="@+id/streetName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:layout_alignBottom="@+id/mapLite"
+                android:visibility="gone"/>
 
             <RelativeLayout
                 android:layout_width="match_parent"

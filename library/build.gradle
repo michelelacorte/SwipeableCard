@@ -2,7 +2,7 @@ apply plugin: 'com.android.library'
 apply plugin: 'com.jfrog.bintray'
 apply plugin: 'com.github.dcendents.android-maven'
 group = 'it.michelelacorte.swipeablecard'
-version = '2.1.0'
+version = '2.2.0'
 
 android {
     compileSdkVersion 23
@@ -12,12 +12,15 @@ android {
         minSdkVersion 14
         targetSdkVersion 23
         versionCode 1
-        versionName "2.1.0"
+        versionName "2.2.0"
     }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            testCoverageEnabled = true
         }
     }
 }
@@ -39,8 +42,9 @@ dependencies {
     compile 'com.android.support:appcompat-v7:23.1.1'
     compile 'com.android.support:cardview-v7:23.1.1'
     compile 'com.android.support:recyclerview-v7:23.1.1'
-    javadocDeps 'com.android.support:support-annotations:23.1.1'
     compile 'com.android.support:design:23.1.1'
+    compile 'com.google.android.gms:play-services:8.4.0'
+    javadocDeps 'com.android.support:support-annotations:23.1.1'
 }
 
 buildscript {
@@ -73,4 +77,25 @@ task javadocJar(type: Jar, dependsOn: javadoc) {
 artifacts {
     archives javadocJar
     archives sourcesJar
+}
+
+bintray {
+    user = 'michelelacorte'
+    key = 'a662763564bee6fa8c354b7d76d85ead4ef74e1c'
+
+    configurations = ['archives']
+    pkg {
+        repo = 'maven'
+        name = 'swipeablecard'
+
+        version {
+            name = '2.2.0'
+            desc = 'Swipeable Card'
+            vcsTag = '2.2.0'
+        }
+
+        licenses = ['Apache-2.0']
+        vcsUrl = 'https://github.com/michelelacorte/SwipeableCard/blob/master/LICENSE'
+        websiteUrl = 'https://github.com/michelelacorte/SwipeableCard'
+    }
 }

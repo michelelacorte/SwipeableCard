@@ -26,6 +26,30 @@
             android:background="?attr/colorPrimary"
             app:popupTheme="@style/AppTheme.PopupOverlay" />
 
+        <RelativeLayout
+            android:visibility="gone"
+            android:id="@+id/radioGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal">
+
+        <RadioButton
+            android:id="@+id/singleMarker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="Single Marker"/>
+
+        <RadioButton
+            android:id="@+id/multipleMarker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/singleMarker"
+            android:layout_toRightOf="@+id/singleMarker"
+            android:text="Multiple Marker"/>
+
+        </RelativeLayout>
+
     </android.support.design.widget.AppBarLayout>
 
     <!-- Recycler View for Swipeable Card -->

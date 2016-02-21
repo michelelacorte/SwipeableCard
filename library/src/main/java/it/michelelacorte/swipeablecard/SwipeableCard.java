@@ -1,10 +1,11 @@
 package it.michelelacorte.swipeablecard;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.TypedArray;
 import android.graphics.Point;
+import android.location.Address;
+import android.location.Geocoder;
 import android.os.Build;
 import android.os.CountDownTimer;
 import android.support.design.widget.FloatingActionButton;
@@ -21,11 +22,29 @@ import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import com.google.android.gms.maps.CameraUpdate;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapView;
+import com.google.android.gms.maps.MapsInitializer;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.model.BitmapDescriptor;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.LatLngBounds;
+import com.google.android.gms.maps.model.MarkerOptions;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.io.IOException;
+import java.util.List;
+import java.util.Locale;
+
 /**
+ * SwipeableCard is a LinearLayout class, the "core" of library
  * Created by Michele on 29/11/2015.
  */
 
@@ -34,7 +53,7 @@ import org.jetbrains.annotations.NotNull;
  * a custom layout of card.
  * @author Michele Lacorte
  */
-public class SwipeableCard extends LinearLayout implements View.OnClickListener, AnimationCard {
+public class SwipeableCard extends LinearLayout implements View.OnClickListener, AnimationCard, OnMapReadyCallback{
     CardView card;
     ImageView image;
     TextView text;
@@ -43,9 +62,10 @@ public class SwipeableCard extends LinearLayout implements View.OnClickListener,
     int height;
     FloatingActionButton fab;
     FrameLayout frame;
+    OptionView mOptionView = null;
 
     /**
-     * Private Method
+     * Private Variable
      */
     float cardRadiusAttr;
     long duration;
@@ -57,8 +77,17 @@ public class SwipeableCard extends LinearLayout implements View.OnClickListener,
     String textAttr;
     boolean isSwipeToDismiss;
     View rootView;
-    boolean isSwipe;
 
+    /**
+     * Maps Variable
+     */
+    GoogleMap mGoogleMap;
+    LatLng mMapLocation;
+    MapView mapView;
+    TextView streetNameView;
+    RelativeLayout relativeMaps;
+    RelativeLayout relativeNormal;
+    float mapsZoom;
 
     /**
      * Customizable Icon and Text
@@ -74,12 +103,11 @@ public class SwipeableCard extends LinearLayout implements View.OnClickListener,
         if(option != null)
         {
 
+        mOptionView = option;
         /*
         Check if Listener was set, clear and re-set it.
          */
         this.setOnTouchListener(null);
-        isSwipe = false;
-        isSwipe = option.isSwipeToDismiss();
         /*
         Clear title and re-set it.
          */
@@ -98,6 +126,10 @@ public class SwipeableCard extends LinearLayout implements View.OnClickListener,
             text = (TextView) findViewById(R.id.text);
             subTitle = (TextView) findViewById(R.id.subTitle);
             frame = (FrameLayout) findViewById(R.id.frame);
+            mapView = (MapView) findViewById(R.id.mapLite);
+            streetNameView = (TextView) findViewById(R.id.streetName);
+            relativeNormal = (RelativeLayout) findViewById(R.id.relativeNormal);
+            relativeMaps = (RelativeLayout) findViewById(R.id.relativeMaps);
             /**
              * Set-up customizable Icon and Text
              */
@@ -112,6 +144,53 @@ public class SwipeableCard extends LinearLayout implements View.OnClickListener,
             fab = (FloatingActionButton) findViewById(R.id.fab);
 
             /**
+             * Check if Maps Card is set (reset object before)
+             */
+            streetNameView.setVisibility(GONE);
+            mapView.setVisibility(GONE);
+            relativeNormal.setVisibility(GONE);
+            relativeMaps.setVisibility(GONE);
+            if(option.isTYPE_CARD_MAPS() == true) {
+                /**
+                 * Multiple marker mode
+                 */
+                if((option.getLatLngArray() != null && option.getLatLngArray().length > 0) ||
+                        (option.getLatLngList() != null && option.getLatLngList().size() > 0)
+                        && option.isMultipleMarker() && !option.isSingleMarker())
+                    {
+                        relativeNormal.setVisibility(GONE);
+                        relativeMaps.setVisibility(VISIBLE);
+                        mapView.setVisibility(VISIBLE);
+                        text.setVisibility(GONE);
+                        image.setVisibility(GONE);
+                        mapView.onCreate(null);
+                        mapView.getMapAsync(this);
+                        setMapLocation();
+                    }else {
+                    /**
+                     * Single marker mode
+                     */
+                        mapsZoom = option.getMapsZoom();
+                        relativeNormal.setVisibility(GONE);
+                        relativeMaps.setVisibility(VISIBLE);
+                        mapView.setVisibility(VISIBLE);
+                        text.setVisibility(GONE);
+                        image.setVisibility(GONE);
+                        mapView.onCreate(null);
+                        mapView.getMapAsync(this);
+                        setMapLocation(option.getLatitude(), option.getLongitude());
+                        if(option.isStreetName() == true)
+                        {
+                            streetNameView.setText(getStreetNameFromLatLong(option.getLatitude(), option.getLongitude(), context));
+                            streetNameView.setVisibility(VISIBLE);
+                        }
+                    }
+                } else {
+                    relativeNormal.setVisibility(VISIBLE);
+                    relativeMaps.setVisibility(GONE);
+                }
+
+            /**
              * Check if Additional Option is set (reset object before)
              */
             fab.setVisibility(GONE);
@@ -120,6 +199,7 @@ public class SwipeableCard extends LinearLayout implements View.OnClickListener,
             iconBtn3.setVisibility(GONE);
             textBtn1.setVisibility(GONE);
             textBtn2.setVisibility(GONE);
+            if(option.getOptionViewAdditional() != null) {
                 if (option.getOptionViewAdditional().getFabIcon() > 0) {
                     fab.setVisibility(View.VISIBLE);
                     if (option.getOptionViewAdditional().getFabIcon() > 0) {
@@ -193,6 +273,7 @@ public class SwipeableCard extends LinearLayout implements View.OnClickListener,
                      */
                     textBtn2.setOnClickListener(option.getOptionViewAdditional().getOnClickListenerTextBtn2());
                 }
+            }
 
         /*
         Check if Text is set.
@@ -234,7 +315,7 @@ public class SwipeableCard extends LinearLayout implements View.OnClickListener,
         /*
         Check if Swipe to Dismiss is set.
          */
-            if (isSwipe || isSwipeToDismiss) {
+            if (option.isSwipeToDismiss() || isSwipeToDismiss) {
                 this.setOnTouchListener(new SwipeDismissTouchListenerLeftRight(
                         this,
                         null,
@@ -383,7 +464,6 @@ public class SwipeableCard extends LinearLayout implements View.OnClickListener,
             toolbar.inflateMenu(option.getMenuItem());
             toolbar.setOnMenuItemClickListener(option.getToolbarListener());
         }
-
         toolbar.setOnClickListener(this);
     }
 
@@ -459,7 +539,7 @@ public class SwipeableCard extends LinearLayout implements View.OnClickListener,
                     fab.animate()
                             .translationY((height - (card.getHeight() + toolbar.getHeight())) + card.getHeight() - (fab.getHeight() - fab.getHeight() / 4))
                             .setDuration(duration).start();
-                }else{
+                }else {
                     fab.animate()
                             .translationY((height - (card.getHeight() + toolbar.getHeight())) + card.getHeight() - (fab.getHeight() - fab.getHeight() / 3))
                             .setDuration(duration).start();
@@ -475,5 +555,176 @@ public class SwipeableCard extends LinearLayout implements View.OnClickListener,
     @Override
     public void onClick(View v) {
         animationCardUp(card, toolbar, duration);
+    }
+
+    /**
+     * Update Google Maps marker, with option (icon and text) for marker
+     */
+    protected void updateMapContents() {
+        mGoogleMap.clear();
+        if(mOptionView.isMultipleMarker() && !mOptionView.isSingleMarker()) {
+            LatLngBounds.Builder builder = new LatLngBounds.Builder();
+            if(mOptionView.getLatLngArray() != null && mOptionView.getLatLngArray().length > 0) {
+                if (mOptionView.getMarkerTitleArray() != null && mOptionView.getMarkerTitleArray().length > 0
+                        && mOptionView.getLatLngArray().length == mOptionView.getMarkerTitleArray().length) {
+                    if(mOptionView.getMarkerIconArray() != null && mOptionView.getMarkerIconArray().length > 0
+                            && mOptionView.getLatLngArray().length == mOptionView.getMarkerIconArray().length)
+                    {
+                        for (int i = 0; i < mOptionView.getLatLngArray().length; i++) {
+                            BitmapDescriptor icon = BitmapDescriptorFactory.fromResource(mOptionView.getMarkerIconArray()[i]);
+                            mGoogleMap.addMarker(new MarkerOptions().position(mOptionView.getLatLngArray()[i]).title(mOptionView.getMarkerTitleArray()[i]).icon(icon));
+                            builder.include(mOptionView.getLatLngArray()[i]);
+                        }
+                    }else {
+                        for (int i = 0; i < mOptionView.getLatLngArray().length; i++) {
+                            mGoogleMap.addMarker(new MarkerOptions().position(mOptionView.getLatLngArray()[i]).title(mOptionView.getMarkerTitleArray()[i]));
+                            builder.include(mOptionView.getLatLngArray()[i]);
+                        }
+                    }
+                } else {
+                    if(mOptionView.getMarkerIconArray() != null && mOptionView.getMarkerIconArray().length > 0
+                            && mOptionView.getLatLngArray().length == mOptionView.getMarkerIconArray().length)
+                    {
+                        for (int i = 0; i < mOptionView.getLatLngArray().length; i++) {
+                            BitmapDescriptor icon = BitmapDescriptorFactory.fromResource(mOptionView.getMarkerIconArray()[i]);
+                            mGoogleMap.addMarker(new MarkerOptions().position(mOptionView.getLatLngArray()[i]).title(mOptionView.getMarkerTitleArray()[i]).icon(icon));
+                            builder.include(mOptionView.getLatLngArray()[i]);
+                        }
+                    }else {
+                        for (int i = 0; i < mOptionView.getLatLngArray().length; i++) {
+                            mGoogleMap.addMarker(new MarkerOptions().position(mOptionView.getLatLngArray()[i]));
+                            builder.include(mOptionView.getLatLngArray()[i]);
+                        }
+                    }
+                }
+            }
+            if(mOptionView.getLatLngList() != null && mOptionView.getLatLngList().size() > 0)
+            {
+                if(mOptionView.getMarkerTitleList() != null && mOptionView.getMarkerTitleList().size() > 0
+                        && mOptionView.getMarkerTitleList().size() == mOptionView.getLatLngList().size())
+                {
+                    if(mOptionView.getMarkerIconList() != null && mOptionView.getMarkerIconList().size() > 0
+                            && mOptionView.getMarkerIconList().size() == mOptionView.getLatLngList().size())
+                    {
+                        for (int i = 0; i < mOptionView.getLatLngList().size(); i++) {
+                            BitmapDescriptor icon = BitmapDescriptorFactory.fromResource(mOptionView.getMarkerIconList().get(i));
+                            mGoogleMap.addMarker(new MarkerOptions().position(mOptionView.getLatLngList().get(i)).title(mOptionView.getMarkerTitleList().get(i)).icon(icon));
+                            builder.include(mOptionView.getLatLngList().get(i));
+                        }
+                    }else {
+                        for (int i = 0; i < mOptionView.getLatLngList().size(); i++) {
+                            mGoogleMap.addMarker(new MarkerOptions().position(mOptionView.getLatLngList().get(i)).title(mOptionView.getMarkerTitleList().get(i)));
+                            builder.include(mOptionView.getLatLngList().get(i));
+                        }
+                    }
+                }else{
+                    if(mOptionView.getMarkerIconList() != null && mOptionView.getMarkerIconList().size() > 0
+                            && mOptionView.getMarkerIconList().size() == mOptionView.getLatLngList().size())
+                    {
+                        for (int i = 0; i < mOptionView.getLatLngList().size(); i++) {
+                            BitmapDescriptor icon = BitmapDescriptorFactory.fromResource(mOptionView.getMarkerIconList().get(i));
+                            mGoogleMap.addMarker(new MarkerOptions().position(mOptionView.getLatLngList().get(i)).icon(icon));
+                            builder.include(mOptionView.getLatLngList().get(i));
+                        }
+                    }else {
+                        for (int i = 0; i < mOptionView.getLatLngList().size(); i++) {
+                            mGoogleMap.addMarker(new MarkerOptions().position(mOptionView.getLatLngList().get(i)));
+                            builder.include(mOptionView.getLatLngList().get(i));
+                        }
+                    }
+                }
+            }
+            LatLngBounds bounds = builder.build();
+            CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngBounds(bounds, 0);
+            mGoogleMap.moveCamera(cameraUpdate);
+        }else{
+            if(mOptionView.getMarkerTitle() != null) {
+                if (mOptionView.getMarkerIcon() != 0) {
+                    BitmapDescriptor icon = BitmapDescriptorFactory.fromResource(mOptionView.getMarkerIcon());
+                    mGoogleMap.addMarker(new MarkerOptions().position(mMapLocation).title(mOptionView.getMarkerTitle()).icon(icon));
+                } else {
+                    mGoogleMap.addMarker(new MarkerOptions().position(mMapLocation).title(mOptionView.getMarkerTitle()));
+                }
+            }else{
+                if (mOptionView.getMarkerIcon() != 0) {
+                    BitmapDescriptor icon = BitmapDescriptorFactory.fromResource(mOptionView.getMarkerIcon());
+                    mGoogleMap.addMarker(new MarkerOptions().position(mMapLocation).icon(icon));
+                } else {
+                    mGoogleMap.addMarker(new MarkerOptions().position(mMapLocation));
+                }
+            }
+            CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(mMapLocation, mapsZoom);
+            mGoogleMap.moveCamera(cameraUpdate);
+        }
+    }
+
+    /**
+     * Set map location, check if Google Maps is not null, than update contents (Single marker)
+     * @param lat latitude double
+     * @param lon longitude double
+     */
+    public void setMapLocation(double lat, double lon) {
+        mMapLocation = new LatLng(lat, lon);
+        if (mGoogleMap != null) {
+            updateMapContents();
+        }
+    }
+
+    /**
+     * Set map location, check if Google Maps is not null, than update contents (Array and List)
+     */
+    public void setMapLocation()
+    {
+        if (mGoogleMap != null) {
+            updateMapContents();
+        }
+    }
+
+
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+        mGoogleMap = googleMap;
+        MapsInitializer.initialize(getContext());
+        googleMap.getUiSettings().setMapToolbarEnabled(true);
+        if (mMapLocation != null && !mOptionView.isMultipleMarker() && mOptionView.isSingleMarker()) {
+            updateMapContents();
+        }
+        if(mOptionView.getLatLngArray() != null && mOptionView.getLatLngArray().length > 0 && mOptionView.isMultipleMarker() && !mOptionView.isSingleMarker())
+        {
+            updateMapContents();
+        }
+        if(mOptionView.getLatLngList() != null && mOptionView.getLatLngList().size() > 0 && mOptionView.isMultipleMarker() && !mOptionView.isSingleMarker())
+        {
+            updateMapContents();
+        }
+    }
+
+    /**
+     * Get street name from latitude and longitude
+     * @param lat latitude double
+     * @param lon longitude double
+     * @param context Context
+     * @return String street name
+     */
+    public String getStreetNameFromLatLong(double lat, double lon, Context context)
+    {
+        String streetName = null;
+        Geocoder geocoder = new Geocoder(context, Locale.getDefault());
+
+        try {
+            List<Address> addresses = geocoder.getFromLocation(lat, lon, 1);
+
+            if (addresses != null) {
+                Address returnedAddress = addresses.get(0);
+                StringBuilder strReturnedAddress = new StringBuilder();
+                for (int j = 0; j < returnedAddress.getMaxAddressLineIndex(); j++) {
+                    strReturnedAddress.append(returnedAddress.getAddressLine(j)).append("");
+                }
+                streetName = strReturnedAddress.toString();
+            }
+        } catch (IOException e) {
+            Log.e("SwipeableCard", "Error tryng to retrieve street name from lat long");
+        }
+        return streetName;
     }
 }
