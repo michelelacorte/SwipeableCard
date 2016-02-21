@@ -28,6 +28,7 @@ In your `MainActivity.java` before `setContentView()`
         };
 
         OptionView.setOptionView(new OptionView.Builder()
+                .normalCard()
                 .image(R.drawable.image)
                 .title("TITLE")
                 .menuItem(R.menu.menu_main)
@@ -45,6 +46,7 @@ SwipeableCard swipeableCard = (SwipeableCard) findViewById(R.id.swipeCard);
 
 ```
         final OptionView customSwipe = new OptionView.Builder()
+                .normalCard()
                 .image(R.drawable.image)
                 .title("Custom Card")
                 .menuItem(R.menu.menu_main)
@@ -61,6 +63,7 @@ SwipeableCard swipeableCard = (SwipeableCard) findViewById(R.id.swipeCard);
                 .build();
 
         final OptionView dismissableSwipe = new OptionView.Builder()
+                .normalCard()
                 .image(R.drawable.image)
                 .title("Dismissable Card")
                 .menuItem(R.menu.menu_main)
