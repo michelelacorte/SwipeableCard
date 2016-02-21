@@ -82,6 +82,8 @@ compile 'it.michelelacorte.swipeablecard:library:2.2.0@aar'
 
 ##DOCUMENTATION
 
+- [Full Documentation](http://michelelacorte.github.io/SwipeableCard/docs/javadoc/index.html)
+
 - [Swipeable Single Card Example](https://github.com/michelelacorte/SwipeableCard/blob/master/SINGLECARD.md)
 
 - [Swipeable RecyclerView Card Example](https://github.com/michelelacorte/SwipeableCard/blob/master/RECYCLERVIEW.md)
@@ -111,7 +113,7 @@ Android API 14+
 - Improved hierarchy type of Card
 - Improved `Builder()` constructor
 - Fixed issue in `OptioViewAdditional`
-- Added documentation to GitHub repo
+- Added documentation to GitHub repo: [Here](http://michelelacorte.github.io/SwipeableCard/docs/javadoc/index.html)
 - Version 1.1 of Application Demo
 
 **v2.1.0**
