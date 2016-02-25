@@ -181,7 +181,7 @@ Author: Michele Lacorte (micky1995g@gmail.com)
 
 ##CONTRIBUTING
 
-If you want to contribute to the project you can open [Pull Request](https://github.com/michelelacorte/SwipeableCard/pulls), or contact me by e-mail.
+If you want to contribute to the project fork it and open [Pull Request](https://github.com/michelelacorte/SwipeableCard/pulls), or contact me by e-mail.
 
 Each proposal will be accepted!
 
