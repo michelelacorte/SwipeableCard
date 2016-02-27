@@ -23,3 +23,26 @@ Example instance of single marker and multiple marker card
 ```
 
 For full method and description see [documentation](http://michelelacorte.github.io/SwipeableCard/docs/javadoc/index.html)
+
+Remember to add this permission on Manifest.xml
+
+```
+    <permission android:name="com.yourPackage.MAPS_RECEIVE"
+        android:protectionLevel="signature"/>
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+    <uses-permission android:name="com.yourPackage.MAPS_RECEIVE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+```
+    
+And Google Maps API Key:
+
+```
+        <meta-data
+            android:name="com.google.android.maps.v2.API_KEY"
+            android:value=Your API key" />
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+```
