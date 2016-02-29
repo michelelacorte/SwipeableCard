@@ -106,6 +106,10 @@ Android API 14+
 
 ##CHANGELOG
 
+**Coming Soon Version**
+- Swipe up/down functionality (automatic and swipe gesture mode)
+- Update library to latest version `23.2.0`
+
 **v2.2.0**
 - Maps Fragment added (with many method see [Preview](http://i.giphy.com/26FPDYox55jE0UBVu.gif))!
 - Maps mode in `RecyclerView` SwipeableCard
