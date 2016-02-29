@@ -108,7 +108,7 @@ Android API 14+
 
 **Coming Soon Version**
 - Swipe up/down functionality (automatic and swipe gesture mode)
-- Update library to latest version `23.2.0`
+- Update support library to latest version `23.2.0`
 
 **v2.2.0**
 - Maps Fragment added (with many method see [Preview](http://i.giphy.com/26FPDYox55jE0UBVu.gif))!
@@ -140,7 +140,7 @@ Android API 14+
 
 **v1.0.1**
 - Support API 14+
-- Update library and gradle
+- Update support library and gradle
 
 **v1.0.0**
 - Support API 21+
