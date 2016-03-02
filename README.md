@@ -108,6 +108,7 @@ Android API 14+
 
 **Coming Soon Version**
 - Swipe up/down functionality (automatic and swipe gesture mode)
+- Added `isAutoAmination` attribute
 - Update support library to latest version `23.2.0`
 - Version 1.2 of Application Demo
 
