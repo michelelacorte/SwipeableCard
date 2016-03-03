@@ -31,6 +31,13 @@
 
 ####[See video demo here](https://www.youtube.com/watch?v=81gAqOm1m5w)
 
+####Credit Card (Coming Soon Version)
+#####In collaboration with [cooltechworks](https://github.com/cooltechworks) and [CreditCardView](https://github.com/cooltechworks/CreditCardView)
+
+![alt tag](http://i.giphy.com/3ornjQLD95Osp4qlm8.gif)
+
+![alt tag](http://i.giphy.com/26tn8QOAqL4SVyRsA.gif)
+
 ####Maps Card!!
 
 ![alt tag](http://i.giphy.com/26FPDYox55jE0UBVu.gif) 
@@ -107,6 +114,7 @@ Android API 14+
 ##CHANGELOG
 
 **Coming Soon Version**
+- Credit Card added!!
 - Swipe up/down functionality (automatic and swipe gesture mode)
 - Added `isAutoAmination` attribute
 - Update support library to latest version `23.2.0`
