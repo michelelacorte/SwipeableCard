@@ -122,7 +122,7 @@ Android API 14+
 - Update support library to latest version `23.2.0`
 - Version 1.2 of Application Demo
 - Fixed `RecyclerView` duplicate menù item in multiple marker mode maps
-- Added Codacy code review
+- Added Codacy code review and fixed some issue
 
 **v2.2.0**
 - Maps Fragment added (with many method see [Preview](http://i.giphy.com/26FPDYox55jE0UBVu.gif))!
