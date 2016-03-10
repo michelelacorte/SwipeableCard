@@ -2,6 +2,8 @@
 
 <h2 align="center">A simple implementation of swipe card like StreetView!!</h1>
 
+[![Codacy Badge](https://api.codacy.com/project/badge/grade/99f0b52958a5425e9d9377a6c253b6fd)](https://www.codacy.com/app/micky1995/SwipeableCard)
+
 <span class="badge-paypal"><a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=LY7EX8WMWPWV6" title="Donate to this project using Paypal"><img src="https://img.shields.io/badge/paypal-donate-yellow.svg" alt="PayPal donate button" /></a></span>
 [![Twitter](https://img.shields.io/badge/Twitter-@LacorteMichele-blue.svg?style=flat)](https://twitter.com/LacorteMichele)
 
@@ -120,6 +122,7 @@ Android API 14+
 - Update support library to latest version `23.2.0`
 - Version 1.2 of Application Demo
 - Fixed `RecyclerView` duplicate menù item in multiple marker mode maps
+- Added Codacy code review
 
 **v2.2.0**
 - Maps Fragment added (with many method see [Preview](http://i.giphy.com/26FPDYox55jE0UBVu.gif))!
