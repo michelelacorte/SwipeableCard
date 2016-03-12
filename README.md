@@ -124,7 +124,7 @@ Android API 14+
 - Credit Card added!!
 - Swipe up/down functionality (automatic and swipe gesture mode)
 - Added `isAutoAmination` attribute
-- Update support library to latest version `23.2.0`
+- Update support library to latest version `23.2.1`
 - Version 1.2 of Application Demo
 - Fixed `RecyclerView` duplicate menù item in multiple marker mode maps
 - Added Codacy code review and fixed some issue
