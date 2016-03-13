@@ -108,6 +108,8 @@ compile 'it.michelelacorte.swipeablecard:library:2.2.0@aar'
 
 - [Maps Card Example](https://github.com/michelelacorte/SwipeableCard/blob/master/MAPS.md)
 
+- [Credit Card Example](https://github.com/michelelacorte/SwipeableCard/blob/master/CREDIT.md)
+
 - [Attribute Table](https://github.com/michelelacorte/SwipeableCard/blob/master/ATTRS.md)
 
 ##SYSTEM REQUIREMENT
@@ -122,6 +124,7 @@ Android API 14+
 
 **Coming Soon Version**
 - Credit Card added!!
+- Credit Card in `RecyclerView`
 - Swipe up/down functionality (automatic and swipe gesture mode)
 - Added `isAutoAmination` attribute
 - Update support library to latest version `23.2.1`
