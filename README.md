@@ -1,5 +1,4 @@
-<h1 align="center">Swipeable Card</h1>
-
+<h1 align="center"><img src="http://s24.postimg.org/n3s9xflud/banner.jpg"/></h1>
 <h2 align="center">A simple implementation of swipe card like StreetView!!</h1>
 
 [![Codacy Badge](https://api.codacy.com/project/badge/grade/99f0b52958a5425e9d9377a6c253b6fd)](https://www.codacy.com/app/micky1995/SwipeableCard)
