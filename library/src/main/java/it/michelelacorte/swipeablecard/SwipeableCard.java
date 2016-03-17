@@ -464,7 +464,7 @@ public class SwipeableCard extends LinearLayout implements View.OnClickListener,
          */
         LayoutInflater inflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View rootView = inflater.inflate(R.layout.swipeable_card, this, true);
+        inflater.inflate(R.layout.swipeable_card, this, true);
         /*
         Get attribute from XML
          */
