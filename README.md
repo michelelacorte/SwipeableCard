@@ -1,6 +1,7 @@
-<h1 align="center">Swipeable Card</h1>
-
+<h1 align="center"><img src="http://s24.postimg.org/n3s9xflud/banner.jpg"/></h1>
 <h2 align="center">A simple implementation of swipe card like StreetView!!</h1>
+
+[![Codacy Badge](https://api.codacy.com/project/badge/grade/99f0b52958a5425e9d9377a6c253b6fd)](https://www.codacy.com/app/micky1995/SwipeableCard)
 
 <span class="badge-paypal"><a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=LY7EX8WMWPWV6" title="Donate to this project using Paypal"><img src="https://img.shields.io/badge/paypal-donate-yellow.svg" alt="PayPal donate button" /></a></span>
 [![Twitter](https://img.shields.io/badge/Twitter-@LacorteMichele-blue.svg?style=flat)](https://twitter.com/LacorteMichele)
@@ -30,6 +31,13 @@
 </a>
 
 ####[See video demo here](https://www.youtube.com/watch?v=81gAqOm1m5w)
+
+####Credit Card (Coming Soon Version)
+#####In collaboration with [cooltechworks](https://github.com/cooltechworks) and [CreditCardView](https://github.com/cooltechworks/CreditCardView)
+
+![alt tag](http://i.giphy.com/3ornjQLD95Osp4qlm8.gif)
+
+![alt tag](http://i.giphy.com/26tn8QOAqL4SVyRsA.gif)
 
 ####Maps Card!!
 
@@ -82,6 +90,8 @@ compile 'it.michelelacorte.swipeablecard:library:2.2.0@aar'
 
 ##DOCUMENTATION
 
+- [Full Documentation](http://michelelacorte.github.io/SwipeableCard/docs/javadoc/index.html)
+
 - [Swipeable Single Card Example](https://github.com/michelelacorte/SwipeableCard/blob/master/SINGLECARD.md)
 
 - [Swipeable RecyclerView Card Example](https://github.com/michelelacorte/SwipeableCard/blob/master/RECYCLERVIEW.md)
@@ -91,6 +101,8 @@ compile 'it.michelelacorte.swipeablecard:library:2.2.0@aar'
 - [Any Card Layout Example](https://github.com/michelelacorte/SwipeableCard/blob/master/ANYCARD.md)
 
 - [Maps Card Example](https://github.com/michelelacorte/SwipeableCard/blob/master/MAPS.md)
+
+- [Credit Card Example](https://github.com/michelelacorte/SwipeableCard/blob/master/CREDIT.md)
 
 - [Attribute Table](https://github.com/michelelacorte/SwipeableCard/blob/master/ATTRS.md)
 
@@ -104,6 +116,16 @@ Android API 14+
 
 ##CHANGELOG
 
+**Coming Soon Version**
+- Credit Card added!!
+- Credit Card in `RecyclerView`
+- Swipe up/down functionality (automatic and swipe gesture mode)
+- Added `isAutoAmination` attribute
+- Update support library to latest version `23.2.1`
+- Version 1.2 of Application Demo
+- Fixed `RecyclerView` duplicate menù item in multiple marker mode maps
+- Added Codacy code review and fixed some issue
+
 **v2.2.0**
 - Maps Fragment added (with many method see [Preview](http://i.giphy.com/26FPDYox55jE0UBVu.gif))!
 - Maps mode in `RecyclerView` SwipeableCard
@@ -111,7 +133,7 @@ Android API 14+
 - Improved hierarchy type of Card
 - Improved `Builder()` constructor
 - Fixed issue in `OptioViewAdditional`
-- Added documentation to GitHub repo
+- Added documentation to GitHub repo: [Here](http://michelelacorte.github.io/SwipeableCard/docs/javadoc/index.html)
 - Version 1.1 of Application Demo
 
 **v2.1.0**
@@ -134,7 +156,7 @@ Android API 14+
 
 **v1.0.1**
 - Support API 14+
-- Update library and gradle
+- Update support library and gradle
 
 **v1.0.0**
 - Support API 21+
@@ -179,7 +201,7 @@ Author: Michele Lacorte (micky1995g@gmail.com)
 
 ##CONTRIBUTING
 
-If you want to contribute to the project you can open [Pull Request](https://github.com/michelelacorte/SwipeableCard/pulls), or contact me by e-mail.
+If you want to contribute to the project fork it and open [Pull Request](https://github.com/michelelacorte/SwipeableCard/pulls), or contact me by e-mail.
 
 Each proposal will be accepted!
 
