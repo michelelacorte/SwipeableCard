@@ -116,7 +116,7 @@ Android API 14+
 
 ##CHANGELOG
 
-**Coming Soon Version**
+**v2.3.0 (Pre-Build)**
 - Credit Card added!!
 - Credit Card in `RecyclerView`
 - Swipe up/down functionality (automatic and swipe gesture mode)
@@ -124,7 +124,7 @@ Android API 14+
 - Update support library to latest version `23.2.1`
 - Version 1.2 of Application Demo
 - Fixed `RecyclerView` duplicate menù item in multiple marker mode maps
-- Added Codacy code review and fixed some issue
+- Added Codacy code review and fixed some issue (from B to A level)
 
 **v2.2.0**
 - Maps Fragment added (with many method see [Preview](http://i.giphy.com/26FPDYox55jE0UBVu.gif))!
