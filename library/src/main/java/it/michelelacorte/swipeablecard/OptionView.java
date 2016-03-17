@@ -7,12 +7,8 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-
-import com.cooltechworks.creditcarddesign.CreditCardView;
 import com.google.android.gms.maps.model.LatLng;
-
 import org.jetbrains.annotations.NotNull;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,7 +42,7 @@ public class OptionView {
     private Toolbar.OnMenuItemClickListener mToolbarListener;
     private long mDuration = 500;
     private float mCardRadius = 4f;
-    static OptionView optionView = null;
+    private static OptionView optionView = null;
     private OptionViewAdditional optionViewAdditional = null;
     private double latitude;
     private double longitude;

@@ -16,7 +16,6 @@ import com.cooltechworks.creditcarddesign.CreditCardView;
  */
 public class ActivityCardCreation extends AppCompatActivity{
     private static CreditCardView creditCardView;
-    private static OptionView option;
     private static Button newCreditCard;
     private static RelativeLayout relativeCreditCardCreation;
     private static RelativeLayout relativeCreditCard;
@@ -27,7 +26,6 @@ public class ActivityCardCreation extends AppCompatActivity{
         newCreditCard = newCreditCardLayout;
         relativeCreditCardCreation = relativeCreditCardCreationLayout;
         relativeCreditCard = relativeCreditCardLayout;
-        option = optionView;
         creditCardView = creditCard;
     }
 

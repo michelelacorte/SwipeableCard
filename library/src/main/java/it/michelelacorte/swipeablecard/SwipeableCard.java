@@ -90,7 +90,7 @@ public class SwipeableCard extends LinearLayout implements View.OnClickListener,
     private String textAttr;
     private boolean isSwipeToDismiss;
     private boolean isAutoAnimation;
-    private View rootView;
+    //private View rootView;
 
     /**
      * Maps Variable
@@ -464,7 +464,7 @@ public class SwipeableCard extends LinearLayout implements View.OnClickListener,
          */
         LayoutInflater inflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        rootView = inflater.inflate(R.layout.swipeable_card, this, true);
+        View rootView = inflater.inflate(R.layout.swipeable_card, this, true);
         /*
         Get attribute from XML
          */
@@ -876,6 +876,8 @@ public class SwipeableCard extends LinearLayout implements View.OnClickListener,
                         positionAnimator.setDuration(0);
                         positionAnimator.start();
                     }
+                    break;
+                default:
                     break;
             }
 

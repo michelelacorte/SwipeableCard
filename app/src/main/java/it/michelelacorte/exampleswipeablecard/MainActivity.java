@@ -35,7 +35,6 @@ import it.michelelacorte.swipeablecard.SwipeableCardAdapter;
 public class MainActivity extends AppCompatActivity {
     private SwipeableCard swipeableCard;
     private RecyclerView rv;
-    private LinearLayoutManager llm;
     private ActionBarDrawerToggle mDrawerToggle;
     private DrawerLayout drawerLayout;
     private CardView cardOther;
@@ -357,7 +356,7 @@ public class MainActivity extends AppCompatActivity {
                         //Set layout HORIZONTAL
                         radioGroupCreditCard.setVisibility(View.GONE);
                         radioGroup.setVisibility(View.GONE);
-                        llm = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
+                        LinearLayoutManager llm = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
                         rv.setLayoutManager(llm);
 
                         List<OptionView> optionViews = new ArrayList<>();
