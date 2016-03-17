@@ -60,9 +60,9 @@ public class OptionView {
     private String[] markerTitleArray;
     private LatLng[] latLngArray;
     private int[] markerIconArray;
-    List<LatLng> latLngList = new ArrayList<>();
-    List<String> markerTitleList = new ArrayList<>();
-    List<Integer> markerIconList = new ArrayList<>();
+    private List<LatLng> latLngList = new ArrayList<>();
+    private List<String> markerTitleList = new ArrayList<>();
+    private List<Integer> markerIconList = new ArrayList<>();
     private int markerIcon;
     private float mapsZoom = 0;
     private boolean autoAnimation = true;
@@ -72,7 +72,7 @@ public class OptionView {
     private String cardHolderName;
     private String rawCardNumber;
     private boolean createCreditCard = false;
-    AppCompatActivity activity;
+    private AppCompatActivity activity;
 
     public OptionView(CreditCard creditCard)
     {
@@ -858,25 +858,25 @@ public class OptionView {
         /*
         Single Marker
          */
-        double latitude;
-        double longitude;
-        String markerTitle;
-        int markerIcon;
-        boolean isStreetName = true;
-        boolean singleMarker = false;
+        private double latitude;
+        private double longitude;
+        private String markerTitle;
+        private int markerIcon;
+        private boolean isStreetName = true;
+        private boolean singleMarker = false;
         /*
         Multiple Marker Array
          */
-        LatLng[] latLngArray;
-        String[] markerTitleArray;
-        int[] markerIconArray;
+        private LatLng[] latLngArray;
+        private String[] markerTitleArray;
+        private int[] markerIconArray;
         /*
         Multiple Marker List
          */
-        List<LatLng> latLngList = new ArrayList<>();
-        List<String> markerTitleList = new ArrayList<>();
-        List<Integer> markerIconList = new ArrayList<>();
-        boolean multipleMarker = false;
+        private List<LatLng> latLngList = new ArrayList<>();
+        private List<String> markerTitleList = new ArrayList<>();
+        private List<Integer> markerIconList = new ArrayList<>();
+        private boolean multipleMarker = false;
 
         /**
          * Set auto animation of SwipeableCard

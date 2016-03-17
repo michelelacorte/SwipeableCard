@@ -15,11 +15,11 @@ import com.cooltechworks.creditcarddesign.CreditCardView;
  * Created by Michele on 03/03/2016.
  */
 public class ActivityCardCreation extends AppCompatActivity{
-    static CreditCardView creditCardView;
-    static OptionView option;
-    static Button newCreditCard;
-    static RelativeLayout relativeCreditCardCreation;
-    static RelativeLayout relativeCreditCard;
+    private static CreditCardView creditCardView;
+    private static OptionView option;
+    private static Button newCreditCard;
+    private static RelativeLayout relativeCreditCardCreation;
+    private static RelativeLayout relativeCreditCard;
 
     public static void setCreditCardView(CreditCardView creditCard, OptionView optionView, Button newCreditCardLayout,
                                          RelativeLayout relativeCreditCardCreationLayout, RelativeLayout relativeCreditCardLayout)

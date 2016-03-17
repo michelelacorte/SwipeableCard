@@ -84,3 +84,24 @@ artifacts {
     archives javadocJar
     archives sourcesJar
 }
+
+bintray {
+    user = 'michelelacorte'
+    key = 'a662763564bee6fa8c354b7d76d85ead4ef74e1c'
+
+    configurations = ['archives']
+    pkg {
+        repo = 'maven'
+        name = 'swipeablecard'
+
+        version {
+            name = '2.3.0'
+            desc = 'Swipeable Card'
+            vcsTag = '2.3.0'
+        }
+
+        licenses = ['Apache-2.0']
+        vcsUrl = 'https://github.com/michelelacorte/SwipeableCard/blob/master/LICENSE'
+        websiteUrl = 'https://github.com/michelelacorte/SwipeableCard'
+    }
+}

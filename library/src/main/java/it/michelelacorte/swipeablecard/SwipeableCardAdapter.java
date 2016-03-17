@@ -443,7 +443,7 @@ public class SwipeableCardAdapter extends RecyclerView.Adapter<SwipeableCardAdap
                     cardViewHolder.streetNameView.setVisibility(View.VISIBLE);
                 }
             }
-        } else if(optionsView.get(i).isTypeCardCredit() == true) {
+        } else if(optionsView.get(i).isTypeCardCredit()) {
             if(optionsView.get(i).isCreateCreditCard()) {
                 cardViewHolder.newCreditCard.setVisibility(View.VISIBLE);
                 cardViewHolder.relativeCreditCardCreation.setVisibility(View.VISIBLE);
