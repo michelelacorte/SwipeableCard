@@ -50,6 +50,30 @@
 
         </RelativeLayout>
 
+        <RelativeLayout
+            android:visibility="gone"
+            android:id="@+id/radioGroupCreditCard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal">
+
+            <RadioButton
+                android:id="@+id/settedCard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="Setted Card"/>
+
+            <RadioButton
+                android:id="@+id/creationCard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@+id/settedCard"
+                android:layout_toRightOf="@+id/settedCard"
+                android:text="Creation Card"/>
+
+        </RelativeLayout>
+
     </android.support.design.widget.AppBarLayout>
 
     <!-- Recycler View for Swipeable Card -->

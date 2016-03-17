@@ -1,6 +1,8 @@
 package it.michelelacorte.swipeablecard;
 
+import android.animation.ObjectAnimator;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.content.res.TypedArray;
 import android.graphics.Point;
@@ -17,14 +19,16 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.Display;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
+import com.cooltechworks.creditcarddesign.CreditCardView;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -54,55 +58,66 @@ import java.util.Locale;
  * @author Michele Lacorte
  */
 public class SwipeableCard extends LinearLayout implements View.OnClickListener, AnimationCard, OnMapReadyCallback{
-    CardView card;
-    ImageView image;
-    TextView text;
-    TextView subTitle;
-    Toolbar toolbar;
-    int height;
-    FloatingActionButton fab;
-    FrameLayout frame;
-    OptionView mOptionView = null;
+
+    private int previousFingerPositionY;
+    private int previousFingerPositionX;
+    private boolean isLocked = false;
+    private int pressedy;
+    private int viewMariginY;
+
+    private CardView card;
+    private ImageView image;
+    private TextView text;
+    private TextView subTitle;
+    private Toolbar toolbar;
+    private int height;
+    private FloatingActionButton fab;
+    private FrameLayout frame;
+    private OptionView mOptionView = null;
+    private CreditCardView creditCardView;
+    private Button newCreditCard;
 
     /**
      * Private Variable
      */
-    float cardRadiusAttr;
-    long duration;
-    String titleAttr;
-    String subTitleAttr;
-    int colorTitleAttr;
-    int colorToolbarAttr;
-    int imageAttr;
-    String textAttr;
-    boolean isSwipeToDismiss;
-    View rootView;
+    private float cardRadiusAttr;
+    private long duration;
+    private String titleAttr;
+    private String subTitleAttr;
+    private int colorTitleAttr;
+    private int colorToolbarAttr;
+    private int imageAttr;
+    private String textAttr;
+    private boolean isSwipeToDismiss;
+    private boolean isAutoAnimation;
+    //private View rootView;
 
     /**
      * Maps Variable
      */
-    GoogleMap mGoogleMap;
-    LatLng mMapLocation;
-    MapView mapView;
-    TextView streetNameView;
-    RelativeLayout relativeMaps;
-    RelativeLayout relativeNormal;
-    float mapsZoom;
+    private GoogleMap mGoogleMap;
+    private LatLng mMapLocation;
+    private MapView mapView;
+    private TextView streetNameView;
+    private RelativeLayout relativeMaps;
+    private RelativeLayout relativeNormal;
+    private RelativeLayout relativeCreditCard;
+    private RelativeLayout relativeCreditCardCreation;
+    private float mapsZoom;
 
     /**
      * Customizable Icon and Text
      */
-    ImageView iconBtn1;
-    ImageView iconBtn2;
-    ImageView iconBtn3;
-    TextView textBtn1;
-    TextView textBtn2;
+    private ImageView iconBtn1;
+    private ImageView iconBtn2;
+    private ImageView iconBtn3;
+    private TextView textBtn1;
+    private TextView textBtn2;
 
     @SuppressWarnings("all")
     public void init(@NotNull final Context context, @NotNull final OptionView option){
         if(option != null)
         {
-
         mOptionView = option;
         /*
         Check if Listener was set, clear and re-set it.
@@ -116,7 +131,7 @@ public class SwipeableCard extends LinearLayout implements View.OnClickListener,
         /*
         Get Screen Size.
          */
-            height = getScreenSize(context);
+        height = getScreenSize(context);
 
         /*
         Set up xml object.
@@ -130,6 +145,9 @@ public class SwipeableCard extends LinearLayout implements View.OnClickListener,
             streetNameView = (TextView) findViewById(R.id.streetName);
             relativeNormal = (RelativeLayout) findViewById(R.id.relativeNormal);
             relativeMaps = (RelativeLayout) findViewById(R.id.relativeMaps);
+            relativeCreditCard = (RelativeLayout) findViewById(R.id.relativeCreditCard);
+            relativeCreditCardCreation = (RelativeLayout) findViewById(R.id.relativeCreditCardCreation);
+            newCreditCard = (Button) findViewById(R.id.creditCardButton);
             /**
              * Set-up customizable Icon and Text
              */
@@ -138,19 +156,27 @@ public class SwipeableCard extends LinearLayout implements View.OnClickListener,
             iconBtn3 = (ImageView) findViewById(R.id.iconBtn3);
             textBtn1 = (TextView) findViewById(R.id.textBtn1);
             textBtn2 = (TextView) findViewById(R.id.textBtn2);
-
-            card.setRadius(cardRadiusAttr);
-
             fab = (FloatingActionButton) findViewById(R.id.fab);
+            creditCardView = (CreditCardView) findViewById(R.id.creditCard);
+
+            frame.setOnTouchListener(null);
+            card.setRadius(cardRadiusAttr);
+            if(!option.isAutoAnimation()) {
+                fab.setVisibility(GONE);
+            }
+            card.setLayoutParams(new FrameLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
+
 
             /**
              * Check if Maps Card is set (reset object before)
              */
             streetNameView.setVisibility(GONE);
             mapView.setVisibility(GONE);
+            relativeCreditCard.setVisibility(GONE);
+            relativeCreditCardCreation.setVisibility(GONE);
             relativeNormal.setVisibility(GONE);
             relativeMaps.setVisibility(GONE);
-            if(option.isTYPE_CARD_MAPS() == true) {
+            if(option.isTypeCardMaps() == true) {
                 /**
                  * Multiple marker mode
                  */
@@ -185,10 +211,59 @@ public class SwipeableCard extends LinearLayout implements View.OnClickListener,
                             streetNameView.setVisibility(VISIBLE);
                         }
                     }
-                } else {
-                    relativeNormal.setVisibility(VISIBLE);
-                    relativeMaps.setVisibility(GONE);
+                }else if(option.isTypeCardCredit() == true) {
+                if(option.isCreateCreditCard()) {
+                    /**
+                     * Create Card mode
+                     */
+                    newCreditCard.setVisibility(VISIBLE);
+                    relativeCreditCardCreation.setVisibility(VISIBLE);
+                    relativeCreditCard.setVisibility(GONE);
+                    newCreditCard.setOnClickListener(new OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            ActivityCardCreation.setCreditCardView(creditCardView, option, newCreditCard, relativeCreditCardCreation, relativeCreditCard);
+                            Intent intent = new Intent(option.getActivity(), ActivityCardCreation.class);
+                            option.getActivity().startActivityForResult(intent, 1);
+                        }
+                    });
+                }else {
+                    /**
+                     * Setted Credit Card
+                     */
+                    creditCardView.setCardExpiry(option.getDateYear());
+                    creditCardView.setCardNumber(option.getRawCardNumber());
+                    creditCardView.setCardHolderName(option.getCardHolderName());
+                if(option.getCvv() != null)
+                {
+                    creditCardView.setCVV(option.getCvv());
+                }else {
+                    creditCardView.setCVV(option.getIntCvv());
                 }
+                    creditCardView.showFront();
+                    creditCardView.setOnClickListener(new OnClickListener() {
+                        boolean back = false;
+
+                        @Override
+                        public void onClick(View v) {
+                            if (!back) {
+                                creditCardView.showBack();
+                                back = true;
+                            } else {
+                                creditCardView.showFront();
+                                back = false;
+                            }
+                        }
+                    });
+                    relativeCreditCardCreation.setVisibility(GONE);
+                    relativeCreditCard.setVisibility(VISIBLE);
+                }
+            }else {
+                relativeCreditCard.setVisibility(GONE);
+                relativeCreditCardCreation.setVisibility(GONE);
+                relativeNormal.setVisibility(VISIBLE);
+                relativeMaps.setVisibility(GONE);
+            }
 
             /**
              * Check if Additional Option is set (reset object before)
@@ -312,12 +387,34 @@ public class SwipeableCard extends LinearLayout implements View.OnClickListener,
                 image.setVisibility(View.VISIBLE);
                 image.setImageResource(imageAttr);
             }
+
+        /*
+        Configure the toolbar
+         */
+        initToolbar(context, option);
+
+        if(option.isAutoAnimation() || isAutoAnimation) {
+        /*
+        Set listener for swipeable card.
+         */
+            this.setClickable(true);
+            this.setOnClickListener(this);
+
+        /*
+        Set listener for root view.
+         */
+            frame.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    animationCardDown(card, toolbar, duration);
+                }
+            });
         /*
         Check if Swipe to Dismiss is set.
-         */
+        */
             if (option.isSwipeToDismiss() || isSwipeToDismiss) {
-                this.setOnTouchListener(new SwipeDismissTouchListenerLeftRight(
-                        this,
+                frame.setOnTouchListener(new SwipeDismissTouchListenerLeftRight(
+                        frame,
                         null,
                         new SwipeDismissTouchListenerLeftRight.DismissCallbacks() {
                             @Override
@@ -328,42 +425,27 @@ public class SwipeableCard extends LinearLayout implements View.OnClickListener,
                             @Override
                             public void onDismiss(View view, Object token) {
                                 setVisibility(View.GONE);
-                                if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
-                                Snackbar.make(SwipeableCard.this, "Deleted!", Snackbar.LENGTH_LONG)
-                                        .setAction("Undo", new View.OnClickListener() {
-                                            @Override
-                                            public void onClick(View v) {
-                                                setVisibility(View.VISIBLE);
-                                            }
-                                        })
-                                        .show();
+                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
+                                    Snackbar.make(SwipeableCard.this, "Deleted!", Snackbar.LENGTH_LONG)
+                                            .setAction("Undo", new View.OnClickListener() {
+                                                @Override
+                                                public void onClick(View v) {
+                                                    setVisibility(View.VISIBLE);
+                                                }
+                                            })
+                                            .show();
                             }
                         }));
             }
+        }else{
+            this.setClickable(false);
+            this.setOnClickListener(null);
+            frame.setOnClickListener(null);
+        }
         /*
-        Configure the toolbar
-         */
-            initToolbar(context, option);
-
-        /*
-        Set listener for swipeable card.
-         */
-            this.setClickable(true);
-            this.setOnClickListener(this);
-
-        /*
-        Set listener for root view.
-         */
-            rootView.setOnClickListener(new OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    animationCardDown(card, toolbar, duration);
-                }
-            });
-            /*
-            Start animation
-             */
-            animationCardStart(card, toolbar);
+        Start animation
+        */
+         animationCardStart(card, toolbar);
         }else{
             Log.e("Initialization", "Option View not initialize!");
         }
@@ -382,7 +464,7 @@ public class SwipeableCard extends LinearLayout implements View.OnClickListener,
          */
         LayoutInflater inflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        rootView = inflater.inflate(R.layout.swipeable_card, this, true);
+        inflater.inflate(R.layout.swipeable_card, this, true);
         /*
         Get attribute from XML
          */
@@ -397,6 +479,7 @@ public class SwipeableCard extends LinearLayout implements View.OnClickListener,
             colorToolbarAttr = ta.getInteger(R.styleable.SwipeableCard_sc_toolbarColor, 0);
             textAttr = ta.getString(R.styleable.SwipeableCard_sc_text);
             isSwipeToDismiss = ta.getBoolean(R.styleable.SwipeableCard_sc_swipeToDismiss, false);
+            isAutoAnimation = ta.getBoolean(R.styleable.SwipeableCard_sc_autoAnimation, true);
         } finally {
             ta.recycle();
         }
@@ -464,7 +547,11 @@ public class SwipeableCard extends LinearLayout implements View.OnClickListener,
             toolbar.inflateMenu(option.getMenuItem());
             toolbar.setOnMenuItemClickListener(option.getToolbarListener());
         }
-        toolbar.setOnClickListener(this);
+        if(option.isAutoAnimation()) {
+            toolbar.setOnClickListener(this);
+        }else{
+            toolbar.setOnClickListener(null);
+        }
     }
 
     @Override
@@ -727,4 +814,78 @@ public class SwipeableCard extends LinearLayout implements View.OnClickListener,
         }
         return streetName;
     }
+
+
+    @Override
+    public boolean onInterceptTouchEvent(MotionEvent ev) {
+        if(!mOptionView.isAutoAnimation()) {
+            if (isLocked) {
+                return false;
+            } else {
+                final int y = (int) ev.getRawY();
+                final int x = (int) ev.getRawX();
+                if (ev.getActionMasked() == MotionEvent.ACTION_DOWN) {
+                    previousFingerPositionX = x;
+                    previousFingerPositionY = y;
+                } else if (ev.getActionMasked() == MotionEvent.ACTION_MOVE) {
+                    int diffY = y - previousFingerPositionY;
+                    int diffX = x - previousFingerPositionX;
+                    if (Math.abs(diffX) + 25 < Math.abs(diffY)) {
+                        return true;
+                    }
+                }
+                return false;
+            }
+        }else{
+            return false;
+        }
+    }
+
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+
+        if (!mOptionView.isAutoAnimation()) {
+            int currenty = (int) event.getRawY();
+            FrameLayout.LayoutParams layoutParams = (FrameLayout.LayoutParams) card.getLayoutParams();
+            switch (event.getAction()) {
+
+                case MotionEvent.ACTION_DOWN:
+                    pressedy = currenty;
+                    viewMariginY = layoutParams.topMargin;
+                    break;
+
+
+                case MotionEvent.ACTION_MOVE:
+                    int diffy = currenty - pressedy;
+                    int marginy = viewMariginY + diffy;
+                    layoutParams.topMargin = marginy;
+                    if (marginy >= height - (card.getHeight() + toolbar.getHeight()) && marginy <= height - ((int) (toolbar.getHeight() * 1.7))) {
+                        ObjectAnimator positionAnimator = ObjectAnimator.ofFloat(card, "y", this.getY(), marginy);
+                        positionAnimator.setDuration(0);
+                        positionAnimator.start();
+                    }
+                    break;
+
+                case MotionEvent.ACTION_UP:
+                    int diffy2 = currenty - pressedy;
+                    int marginy2 = viewMariginY + diffy2;
+                    layoutParams.topMargin = marginy2;
+                    if (marginy2 >= height - (card.getHeight() + toolbar.getHeight()) && marginy2 <= height - ((int) (toolbar.getHeight() * 1.7))) {
+                        ObjectAnimator positionAnimator = ObjectAnimator.ofFloat(card, "y", this.getY(), marginy2);
+                        positionAnimator.setDuration(0);
+                        positionAnimator.start();
+                    }
+                    break;
+                default:
+                    break;
+            }
+
+            return true;
+        }else
+        {
+            return false;
+        }
+    }
+
 }

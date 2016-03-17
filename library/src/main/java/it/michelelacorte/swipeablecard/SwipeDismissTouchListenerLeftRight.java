@@ -197,6 +197,8 @@ public class SwipeDismissTouchListenerLeftRight implements View.OnTouchListener 
                 }
                 break;
             }
+            default:
+                break;
         }
         return false;
     }

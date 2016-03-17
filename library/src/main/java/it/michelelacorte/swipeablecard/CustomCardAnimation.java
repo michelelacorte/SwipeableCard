@@ -36,15 +36,15 @@ public class CustomCardAnimation {
     {
         if(card == null)
         {
-            throw new NullPointerException("CardView can not be null, please check it!");
+            throw new IllegalArgumentException("CardView can not be null, please check it!");
         }
         if(context == null)
         {
-            throw new NullPointerException("Context can not be null, please check it!");
+            throw new IllegalArgumentException("Context can not be null, please check it!");
         }
         if(startCardPosition <= 0)
         {
-            throw new NullPointerException("Start Card Position can not be <= 0, please check it!");
+            throw new IllegalArgumentException("Start Card Position can not be <= 0, please check it!");
         }
         this.mCardView = card;
         this.mContext = context;
@@ -63,15 +63,15 @@ public class CustomCardAnimation {
     {
         if(card == null)
         {
-            throw new NullPointerException("CardView can not be null, please check it!");
+            throw new IllegalArgumentException("CardView can not be null, please check it!");
         }
         if(context == null)
         {
-            throw new NullPointerException("Context can not be null, please check it!");
+            throw new IllegalArgumentException("Context can not be null, please check it!");
         }
         if(startCardPosition <= 0)
         {
-            throw new NullPointerException("Start Card Position can not be <= 0, please check it!");
+            throw new IllegalArgumentException("Start Card Position can not be <= 0, please check it!");
         }
         this.mCardView = card;
         this.mContext = context;

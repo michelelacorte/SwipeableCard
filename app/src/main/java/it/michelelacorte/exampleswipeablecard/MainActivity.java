@@ -33,15 +33,17 @@ import it.michelelacorte.swipeablecard.SwipeableCard;
 import it.michelelacorte.swipeablecard.SwipeableCardAdapter;
 
 public class MainActivity extends AppCompatActivity {
-    SwipeableCard swipeableCard;
-    RecyclerView rv;
-    LinearLayoutManager llm;
-    ActionBarDrawerToggle mDrawerToggle;
-    DrawerLayout drawerLayout;
-    CardView cardOther;
-    RadioButton singleMarker;
-    RadioButton multipleMarker;
-    RelativeLayout radioGroup;
+    private SwipeableCard swipeableCard;
+    private RecyclerView rv;
+    private ActionBarDrawerToggle mDrawerToggle;
+    private DrawerLayout drawerLayout;
+    private CardView cardOther;
+    private RadioButton singleMarker;
+    private RadioButton multipleMarker;
+    private RadioButton settedCard;
+    private RadioButton creationCard;
+    private RelativeLayout radioGroup;
+    private RelativeLayout radioGroupCreditCard;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -106,6 +108,40 @@ public class MainActivity extends AppCompatActivity {
                         .build())
                 .build();
 
+        final OptionView singleSwipeNotAutoAnimation = new OptionView.Builder()
+                .normalCard()
+                .setAutoAnimation(false)
+                .text("Text, a lot of Text, a lot of Text, a lot of Text, a lot of Text, a lot of Text, a lot of Text, a lot of Text, a lot of Text, a lot of Text, a lot of Text," +
+                        " a lot of Text, a lot of Text, a lot of Text, a lot of Text, a lot of Text, a lot of Text")
+                .title("Single Card")
+                .menuItem(R.menu.menu_main)
+                .toolbarListener(toolbarListener)
+                .setAdditionalItem(new OptionViewAdditional.Builder()
+                        .setFabIcon(android.R.drawable.ic_dialog_info)
+                        .setFabColor(R.color.colorPrimary)
+                        .setOnClickListenerFab(clickFab)
+                        .build())
+                .build();
+
+        final OptionView creditCardSetted = new OptionView.Builder()
+                .creditCard()
+                .setCVV("233")
+                .setCardHolderName("Lacorte Michele")
+                .setCardNumber("5566784298446522")
+                .setCardExpiry("01/20")
+                .title("Credit Card")
+                .menuItem(R.menu.menu_main)
+                .toolbarListener(toolbarListener)
+                .build();
+
+        final OptionView creditCardCreation = new OptionView.Builder()
+                .creditCard()
+                .setCardCreation(MainActivity.this)
+                .title("Credit Card")
+                .menuItem(R.menu.menu_main)
+                .toolbarListener(toolbarListener)
+                .build();
+
         final OptionView customSwipe = new OptionView.Builder()
                 .normalCard()
                 .image(R.drawable.image)
@@ -163,8 +199,10 @@ public class MainActivity extends AppCompatActivity {
         rv = (RecyclerView) findViewById(R.id.rv);
         singleMarker = (RadioButton) findViewById(R.id.singleMarker);
         multipleMarker = (RadioButton) findViewById(R.id.multipleMarker);
+        settedCard = (RadioButton) findViewById(R.id.settedCard);
+        creationCard = (RadioButton) findViewById(R.id.creationCard);
         radioGroup = (RelativeLayout) findViewById(R.id.radioGroup);
-
+        radioGroupCreditCard = (RelativeLayout) findViewById(R.id.radioGroupCreditCard);
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.navigation_view);
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
@@ -175,6 +213,7 @@ public class MainActivity extends AppCompatActivity {
                         /**
                          * Example of Single Swipeable Card.
                          */
+                        radioGroupCreditCard.setVisibility(View.GONE);
                         radioGroup.setVisibility(View.GONE);
                         rv.setVisibility(View.GONE);
                         cardOther.setVisibility(View.GONE);
@@ -182,10 +221,56 @@ public class MainActivity extends AppCompatActivity {
                         swipeableCard.setVisibility(View.VISIBLE);
                         drawerLayout.closeDrawers();
                         break;
+                    case R.id.CreditCard:
+                        radioGroup.setVisibility(View.GONE);
+                        radioGroupCreditCard.setVisibility(View.VISIBLE);
+                        rv.setVisibility(View.GONE);
+                        cardOther.setVisibility(View.GONE);
+                        creationCard.setChecked(false);
+                        settedCard.setChecked(true);
+                        swipeableCard.init(getApplicationContext(), creditCardSetted);
+                        swipeableCard.setVisibility(View.VISIBLE);
+                        settedCard.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                            @Override
+                            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                                swipeableCard.setVisibility(View.GONE);
+                                if (settedCard.isChecked()) {
+                                    creationCard.setChecked(false);
+                                    swipeableCard.init(getApplicationContext(), creditCardSetted);
+                                    swipeableCard.setVisibility(View.VISIBLE);
+                                }
+                            }
+                        });
+                        creationCard.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                            @Override
+                            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                                swipeableCard.setVisibility(View.GONE);
+                                if (creationCard.isChecked()) {
+                                    settedCard.setChecked(false);
+                                    swipeableCard.init(getApplicationContext(), creditCardCreation);
+                                    swipeableCard.setVisibility(View.VISIBLE);
+                                }
+                            }
+                        });
+                        drawerLayout.closeDrawers();
+                        break;
+                    case R.id.SingleSwipeNotAutoAnimation:
+                        /**
+                         * Example of Single Swipeable Card with Swipe Gesture.
+                         */
+                        radioGroupCreditCard.setVisibility(View.GONE);
+                        radioGroup.setVisibility(View.GONE);
+                        rv.setVisibility(View.GONE);
+                        cardOther.setVisibility(View.GONE);
+                        swipeableCard.init(getApplicationContext(), singleSwipeNotAutoAnimation);
+                        swipeableCard.setVisibility(View.VISIBLE);
+                        drawerLayout.closeDrawers();
+                        break;
                     case R.id.OtherSwipe:
                         /**
                          * Example of Other Card Layout.
                          */
+                        radioGroupCreditCard.setVisibility(View.GONE);
                         radioGroup.setVisibility(View.GONE);
                         rv.setVisibility(View.GONE);
                         swipeableCard.setVisibility(View.GONE);
@@ -210,6 +295,7 @@ public class MainActivity extends AppCompatActivity {
                         /**
                          * Custom Card View Example
                          */
+                        radioGroupCreditCard.setVisibility(View.GONE);
                         radioGroup.setVisibility(View.GONE);
                         cardOther.setVisibility(View.GONE);
                         rv.setVisibility(View.GONE);
@@ -218,6 +304,7 @@ public class MainActivity extends AppCompatActivity {
                         drawerLayout.closeDrawers();
                         break;
                     case R.id.MapSwipe:
+                        radioGroupCreditCard.setVisibility(View.GONE);
                         radioGroup.setVisibility(View.VISIBLE);
                         cardOther.setVisibility(View.GONE);
                         rv.setVisibility(View.GONE);
@@ -254,6 +341,7 @@ public class MainActivity extends AppCompatActivity {
                         /**
                          * Example of Dismissable Swipeable Card.
                          */
+                        radioGroupCreditCard.setVisibility(View.GONE);
                         radioGroup.setVisibility(View.GONE);
                         cardOther.setVisibility(View.GONE);
                         rv.setVisibility(View.GONE);
@@ -266,8 +354,9 @@ public class MainActivity extends AppCompatActivity {
                          * Example of Recycler View Swipeable Card.
                          */
                         //Set layout HORIZONTAL
+                        radioGroupCreditCard.setVisibility(View.GONE);
                         radioGroup.setVisibility(View.GONE);
-                        llm = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
+                        LinearLayoutManager llm = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
                         rv.setLayoutManager(llm);
 
                         List<OptionView> optionViews = new ArrayList<>();
@@ -321,6 +410,26 @@ public class MainActivity extends AppCompatActivity {
                                                 android.R.drawable.ic_menu_call,
                                                 android.R.drawable.ic_menu_delete)
                                         .build())
+                                .build());
+
+                        optionViews.add(new OptionView.Builder()
+                                .creditCard()
+                                .title("Credit Card")
+                                .setCardCreation(MainActivity.this)
+                                .colorTitle(R.color.colorPrimary)
+                                .menuItem(R.menu.menu_main)
+                                .toolbarListener(toolbarListener)
+                                .build());
+
+                        optionViews.add(new OptionView.Builder()
+                                .creditCard()
+                                .setCVV("233")
+                                .setCardHolderName("Lacorte Michele")
+                                .setCardNumber("5566784298446522")
+                                .setCardExpiry("01/20")
+                                .title("Credit Card")
+                                .menuItem(R.menu.menu_main)
+                                .toolbarListener(toolbarListener)
                                 .build());
 
                         optionViews.add(new OptionView.Builder().mapsCard()
@@ -382,6 +491,8 @@ public class MainActivity extends AppCompatActivity {
                         share.setType("text/plain");
                         share.putExtra(Intent.EXTRA_TEXT, "Hello!\nSee SwipeableCardLibrary at https://github.com/michelelacorte/SwipeableCard");
                         startActivity(Intent.createChooser(share, "Swipeable Card Library"));
+                        break;
+                    default:
                         break;
                 }
                 return false;

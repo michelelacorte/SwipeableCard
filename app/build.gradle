@@ -17,7 +17,7 @@ android {
         minSdkVersion 14
         targetSdkVersion 23
         versionCode 2
-        versionName "1.1"
+        versionName "1.2"
     }
     buildTypes {
         release {
@@ -25,7 +25,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
         debug {
-            debuggable false
+            debuggable true
         }
     }
 }
@@ -33,11 +33,11 @@ android {
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:23.1.1'
-    compile 'com.android.support:design:23.1.1'
-    compile 'com.android.support:recyclerview-v7:23.1.1'
-    compile 'com.android.support:cardview-v7:23.1.1'
-    compile 'it.michelelacorte.swipeablecard:library:2.2.0'
-    //compile project (':library')
+    compile 'com.android.support:appcompat-v7:23.2.1'
+    compile 'com.android.support:design:23.2.1'
+    compile 'com.android.support:recyclerview-v7:23.2.1'
+    compile 'com.android.support:cardview-v7:23.2.1'
+    //compile 'it.michelelacorte.swipeablecard:library:2.2.0'
+    compile project (':library')
     compile 'com.google.android.gms:play-services:8.4.0'
 }

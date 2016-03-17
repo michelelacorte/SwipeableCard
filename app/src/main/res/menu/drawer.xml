@@ -10,6 +10,18 @@
             android:title="@string/single_swipe" />
 
         <item
+            android:id="@+id/SingleSwipeNotAutoAnimation"
+            android:checked="false"
+            android:icon="@drawable/ic_swap_vert_black_24dp"
+            android:title="@string/single_swipe_not_anim" />
+
+        <item
+            android:id="@+id/CreditCard"
+            android:checked="false"
+            android:icon="@drawable/ic_euro_symbol_black_24dp"
+            android:title="@string/credit_card" />
+
+        <item
             android:id="@+id/CustomSwipe"
             android:icon="@drawable/ic_class_black_24dp"
             android:checked="false"

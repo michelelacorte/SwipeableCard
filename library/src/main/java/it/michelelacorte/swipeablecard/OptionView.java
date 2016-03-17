@@ -3,13 +3,12 @@ package it.michelelacorte.swipeablecard;
 import android.support.annotation.AnyRes;
 import android.support.annotation.ColorRes;
 import android.support.annotation.DrawableRes;
+import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-
 import com.google.android.gms.maps.model.LatLng;
-
 import org.jetbrains.annotations.NotNull;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,7 +42,7 @@ public class OptionView {
     private Toolbar.OnMenuItemClickListener mToolbarListener;
     private long mDuration = 500;
     private float mCardRadius = 4f;
-    static OptionView optionView = null;
+    private static OptionView optionView = null;
     private OptionViewAdditional optionViewAdditional = null;
     private double latitude;
     private double longitude;
@@ -51,17 +50,71 @@ public class OptionView {
     private boolean isStreetName = true;
     private boolean TYPE_CARD_NORMAL = false;
     private boolean TYPE_CARD_MAPS = false;
+    private boolean TYPE_CARD_CREDIT = false;
     private boolean multipleMarker = false;
     private boolean singleMarker = false;
     private String[] markerTitleArray;
     private LatLng[] latLngArray;
     private int[] markerIconArray;
-    List<LatLng> latLngList = new ArrayList<>();
-    List<String> markerTitleList = new ArrayList<>();
-    List<Integer> markerIconList = new ArrayList<>();
+    private List<LatLng> latLngList = new ArrayList<>();
+    private List<String> markerTitleList = new ArrayList<>();
+    private List<Integer> markerIconList = new ArrayList<>();
     private int markerIcon;
     private float mapsZoom = 0;
+    private boolean autoAnimation = true;
+    private int intCvv;
+    private String cvv;
+    private String dateYear;
+    private String cardHolderName;
+    private String rawCardNumber;
+    private boolean createCreditCard = false;
+    private AppCompatActivity activity;
 
+    public OptionView(CreditCard creditCard)
+    {
+        if(creditCard.mColorTitle == 0)
+        {
+            Log.e("ColorTitle", "Impossible to set Color Title to 0, default value BLACK is set! Please Check it");
+            mColorTitle = android.R.color.black;
+        }else {
+            mColorTitle = creditCard.mColorTitle;
+        }
+        if(creditCard.mTitle == null)
+        {
+            Log.e("Title", "Impossible to set Title to null, default value empty string is set! Please Check it");
+            mTitle = "";
+        }else {
+            mTitle = creditCard.mTitle;
+        }
+        if(creditCard.mToolbarColor == 0)
+        {
+            Log.e("ToolbarColor", "Impossible to set Toolbar Color to 0, default value transparent is set! Please Check it");
+            mToolbarColor = android.R.color.transparent;
+
+        }else {
+            mToolbarColor = creditCard.mToolbarColor;
+        }
+        mMenuItem = creditCard.mMenuItem;
+        mSubTitle = creditCard.mSubTitle;
+        mToolbarListener = creditCard.mToolbarListener;
+        isMenuItem = creditCard.isMenuItem;
+        isSubTitle = creditCard.isSubTitle;
+        isSwipeLeftRight = creditCard.isSwipeLeftRight;
+        mDuration = creditCard.mDuration;
+        optionViewAdditional = creditCard.optionViewAdditional;
+        mCardRadius = creditCard.mCardRadius;
+        autoAnimation = creditCard.autoAnimation;
+        intCvv = creditCard.intCvv;
+        cvv = creditCard.cvv;
+        dateYear = creditCard.dateYear;
+        cardHolderName = creditCard.cardHolderName;
+        rawCardNumber = creditCard.rawCardNumber;
+        activity = creditCard.activity;
+        createCreditCard = creditCard.createCard;
+        TYPE_CARD_CREDIT = true;
+        TYPE_CARD_MAPS = false;
+        TYPE_CARD_NORMAL = false;
+    }
 
     /**
      * Public constructor for set option to Swipeable Card (Maps Mode).
@@ -117,8 +170,10 @@ public class OptionView {
         markerIconArray = mapsCard.markerIconArray;
         markerIconList = mapsCard.markerIconList;
         mapsZoom = mapsCard.mZoom;
+        autoAnimation = mapsCard.autoAnimation;
         TYPE_CARD_MAPS = true;
         TYPE_CARD_NORMAL = false;
+        TYPE_CARD_CREDIT = false;
     }
 
     /**
@@ -161,8 +216,10 @@ public class OptionView {
         mDuration = normalCard.mDuration;
         optionViewAdditional = normalCard.optionViewAdditional;
         mCardRadius = normalCard.mCardRadius;
+        autoAnimation = normalCard.autoAnimation;
         TYPE_CARD_NORMAL = true;
         TYPE_CARD_MAPS = false;
+        TYPE_CARD_CREDIT = false;
     }
 
     /**
@@ -177,6 +234,9 @@ public class OptionView {
         public MapsCard mapsCard()
         {
             return new MapsCard();
+        }
+        public CreditCard creditCard() {
+            return new CreditCard();
         }
     }
 
@@ -347,7 +407,7 @@ public class OptionView {
      * Get boolean to know if Normal Card is set
      * @return boolean TYPE_CARD_NORMAL
      */
-    public boolean isTYPE_CARD_NORMAL() {
+    public boolean isTypeCardNormal() {
         return TYPE_CARD_NORMAL;
     }
 
@@ -355,8 +415,16 @@ public class OptionView {
      * Get boolean to know if Maps Card is set
      * @return boolean TYPE_CARD_MAPS
      */
-    public boolean isTYPE_CARD_MAPS() {
+    public boolean isTypeCardMaps() {
         return TYPE_CARD_MAPS;
+    }
+
+    /**
+     * Get boolean to know is Credit Card is set
+     * @return boolean TYPE_CARD_CREDIT
+     */
+    public boolean isTypeCardCredit() {
+        return TYPE_CARD_CREDIT;
     }
 
     /**
@@ -455,51 +523,367 @@ public class OptionView {
         return mapsZoom;
     }
 
+    /**
+     * Get boolean if auto animation is present
+     * @return boolean autoAnimation
+     */
+    public boolean isAutoAnimation() {
+        return autoAnimation;
+    }
+
+    /**
+     * Get int CVV of Credit Card
+     * @return int intCvv
+     */
+    public int getIntCvv() {
+        return intCvv;
+    }
+
+    /**
+     * Get String CVV of Credit Card
+     * @return String cvv
+     */
+    public String getCvv() {
+        return cvv;
+    }
+
+    /**
+     * Get String of Date/Year of Credit Card
+     * @return String dateYear
+     */
+    public String getDateYear() {
+        return dateYear;
+    }
+
+    /**
+     * Get String credit card name
+     * @return String cardHolderName
+     */
+    public String getCardHolderName() {
+        return cardHolderName;
+    }
+
+    /**
+     * Get credit card number
+     * @return String rawCardNumber
+     */
+    public String getRawCardNumber() {
+        return rawCardNumber;
+    }
+
+    /**
+     * Get boolean if create credit card is set
+     * @return boolean createCreditCard
+     */
+    public boolean isCreateCreditCard() {
+        return createCreditCard;
+    }
+
+
+    /**
+     * Get activity
+     * @return AppCompatActivity activity
+     */
+    public AppCompatActivity getActivity() {
+        return activity;
+    }
+
+    /**
+     * Credit Card mode
+     */
+    public static class CreditCard implements Card{
+        private int mColorTitle;
+        private int mMenuItem;
+        private String mTitle;
+        private String mSubTitle;
+        private int mToolbarColor;
+        private boolean isMenuItem = false;
+        private boolean isSubTitle = false;
+        private boolean isSwipeLeftRight = false;
+        private Toolbar.OnMenuItemClickListener mToolbarListener;
+        private long mDuration = 500;
+        private float mCardRadius = 4f;
+        private boolean autoAnimation = true;
+        private OptionViewAdditional optionViewAdditional;
+        private int intCvv;
+        private String cvv;
+        private String dateYear;
+        private String cardHolderName;
+        private String rawCardNumber;
+        private AppCompatActivity activity;
+        private boolean createCard = false;
+
+        /**
+         * Set Credit Card creation
+         * @param activity AppCompatActivity
+         */
+        public CreditCard setCardCreation(AppCompatActivity activity)
+        {
+            this.activity = activity;
+            createCard = true;
+            return this;
+        }
+
+        /**
+         * Set Credit Card cvv
+         * @param cvv int
+         */
+        public CreditCard setCVV(int cvv)
+        {
+            intCvv = cvv;
+            return this;
+        }
+
+        /**
+         * Set Credit Card cvv
+         * @param cvv String
+         */
+        public CreditCard setCVV(String cvv)
+        {
+            this.cvv = cvv;
+            return this;
+        }
+
+        /**
+         * Set Credit Card expiry
+         * @param dateYear String
+         */
+        public CreditCard setCardExpiry(@Nullable String dateYear)
+        {
+            this.dateYear = dateYear;
+            return this;
+        }
+
+        /**
+         * Set Credit Card holder name
+         * @param cardHolderName String
+         */
+        public CreditCard setCardHolderName(@Nullable String cardHolderName)
+        {
+            this.cardHolderName = cardHolderName;
+            return this;
+        }
+
+        /**
+         * Set Credit Card Number
+         * @param cardNumber String
+         */
+        public CreditCard setCardNumber(@Nullable String cardNumber)
+        {
+            this.rawCardNumber = cardNumber;
+            return this;
+        }
+
+        /**
+         * Set auto animation of SwipeableCard
+         * @param autoAnimation boolean auto animation, default true
+         */
+        @Override
+        public CreditCard setAutoAnimation(boolean autoAnimation)
+        {
+            this.autoAnimation = autoAnimation;
+            return this;
+        }
+        /**
+         * Swipe to dismiss (left-right) animation for card, default false
+         * @param isSwipe boolean
+         */
+        @Override
+        public CreditCard setSwipeToDismiss(boolean isSwipe)
+        {
+            isSwipeLeftRight = isSwipe;
+            return this;
+        }
+
+        /**
+         * Set radius of SwipeableCard
+         * @param radius float rapresent radius
+         */
+        @Override
+        public CreditCard setCardRadius(float radius)
+        {
+            if(radius <= 0)
+            {
+                Log.e("CardRadius", "Impossible to set Card Radius lower than 0! Please Check it");
+            }
+            else {
+                mCardRadius = radius;
+            }
+            return this;
+        }
+
+        /**
+         * Set additional item with OptionViewAdditional.Builder() constructor
+         * @param option OptionViewAdditional
+         */
+        @Override
+        public CreditCard setAdditionalItem(@NotNull OptionViewAdditional option)
+        {
+            optionViewAdditional = option;
+            return this;
+        }
+
+        /**
+         * Set animation duration for up and down Swipeable Card
+         * @param durationInMillis representing the duration
+         */
+        @Override
+        public CreditCard setDuration(long durationInMillis)
+        {
+            if(durationInMillis <= 0)
+            {
+                Log.e("Duration", "Impossible to set Duration lower than 0! Please Check it");
+            }
+            else {
+                mDuration = durationInMillis;
+            }
+            return this;
+        }
+
+        /**
+         * Toolbar Listener for set own listener with own option to menu item.
+         * @param toolbarListener An listener thath implements OnMenuItemClickListener(..)
+         */
+        @Override
+        public CreditCard toolbarListener(@NotNull Toolbar.OnMenuItemClickListener toolbarListener)
+        {
+            mToolbarListener = toolbarListener;
+            return this;
+        }
+
+        /**
+         * Color Title of Swipeable Card, default is BLACK.
+         * @param colorTitle A color for Title of Swipeable Card
+         */
+        @Override
+        public CreditCard colorTitle(@ColorRes int colorTitle) {
+            mColorTitle = colorTitle;
+            return this;
+        }
+
+        /**
+         * Menu Item for set custom menu item to Swipeable Card.
+         * @param menuItem An int from R.menu class.
+         */
+        @Override
+        public CreditCard menuItem(@AnyRes int menuItem) {
+
+            if(menuItem == 0)
+            {
+                Log.e("MenuItem", "Impossible to set Menu Item to 0! Please Check it");
+            }
+            else {
+                mMenuItem = menuItem;
+                isMenuItem = true;
+            }
+            return this;
+        }
+
+        /**
+         * Set up your Title to Swipeable Card.
+         * @param title String for Swipeable Card Title
+         */
+        @Override
+        public CreditCard title(@NotNull String title) {
+            mTitle = title;
+            return this;
+        }
+
+        /**
+         * Set sub title of Swipeable Card
+         * @param subTitle String for sub title of Swipeable Card
+         */
+        @Override
+        public CreditCard subTitle(@NotNull String subTitle) {
+            mSubTitle = subTitle;
+            isSubTitle = true;
+            return this;
+        }
+
+        /**
+         * Toolbar Color of Swipeable Card.
+         * @param toolbarColor Resource integer which describe color
+         */
+        @Override
+        public CreditCard toolbarColor(@ColorRes int toolbarColor) {
+
+            if(toolbarColor == 0)
+            {
+                Log.e("ToolbarColor", "Impossible to set Toolbar Color to 0, default value transparent is set! Please Check it");
+                mToolbarColor = android.R.color.transparent;
+            }
+            else {
+                mToolbarColor = toolbarColor;
+            }
+            return this;
+        }
+
+        /**
+         * Public builder to set OptionView class with custom option.
+         */
+        @Override
+        public OptionView build() {
+            return new OptionView(this);
+        }
+    }
 
     /**
      * Maps Card mode
      */
     @SuppressWarnings("unused")
     public static class MapsCard implements Card{
-        int mColorTitle;
-        int mMenuItem;
-        String mTitle;
-        String mText;
-        String mSubTitle;
-        int mImage;
-        int mToolbarColor;
-        boolean isMenuItem = false;
-        boolean isImage = false;
-        boolean isText = true;
-        boolean isSubTitle = false;
-        boolean isSwipeLeftRight = false;
-        Toolbar.OnMenuItemClickListener mToolbarListener;
-        long mDuration = 500;
-        float mCardRadius = 4f;
-        OptionViewAdditional optionViewAdditional;
-        float mZoom = 0;
+        private int mColorTitle;
+        private int mMenuItem;
+        private String mTitle;
+        private String mText;
+        private String mSubTitle;
+        private int mImage;
+        private int mToolbarColor;
+        private boolean isMenuItem = false;
+        private boolean isImage = false;
+        private boolean isText = true;
+        private boolean isSubTitle = false;
+        private boolean isSwipeLeftRight = false;
+        private Toolbar.OnMenuItemClickListener mToolbarListener;
+        private long mDuration = 500;
+        private float mCardRadius = 4f;
+        private OptionViewAdditional optionViewAdditional;
+        private float mZoom = 0;
+        private boolean autoAnimation = true;
+
         /*
         Single Marker
          */
-        double latitude;
-        double longitude;
-        String markerTitle;
-        int markerIcon;
-        boolean isStreetName = true;
-        boolean singleMarker = false;
+        private double latitude;
+        private double longitude;
+        private String markerTitle;
+        private int markerIcon;
+        private boolean isStreetName = true;
+        private boolean singleMarker = false;
         /*
         Multiple Marker Array
          */
-        LatLng[] latLngArray;
-        String[] markerTitleArray;
-        int[] markerIconArray;
+        private LatLng[] latLngArray;
+        private String[] markerTitleArray;
+        private int[] markerIconArray;
         /*
         Multiple Marker List
          */
-        List<LatLng> latLngList = new ArrayList<>();
-        List<String> markerTitleList = new ArrayList<>();
-        List<Integer> markerIconList = new ArrayList<>();
-        boolean multipleMarker = false;
+        private List<LatLng> latLngList = new ArrayList<>();
+        private List<String> markerTitleList = new ArrayList<>();
+        private List<Integer> markerIconList = new ArrayList<>();
+        private boolean multipleMarker = false;
+
+        /**
+         * Set auto animation of SwipeableCard
+         * @param autoAnimation boolean auto animation, default true
+         */
+        @Override
+        public MapsCard setAutoAnimation(boolean autoAnimation)
+        {
+         this.autoAnimation = autoAnimation;
+         return this;
+        }
 
         /**
          * Set location of maps
@@ -821,23 +1205,34 @@ public class OptionView {
      * Normal Card Mode
      */
     public static class NormalCard implements Card{
-        int mColorTitle;
-        int mMenuItem;
-        String mTitle;
-        String mText;
-        String mSubTitle;
-        int mImage;
-        int mToolbarColor;
-        boolean isMenuItem = false;
-        boolean isImage = false;
-        boolean isText = true;
-        boolean isSubTitle = false;
-        boolean isSwipeLeftRight = false;
-        Toolbar.OnMenuItemClickListener mToolbarListener;
-        long mDuration = 500;
-        float mCardRadius = 4f;
-        OptionViewAdditional optionViewAdditional;
+        private int mColorTitle;
+        private int mMenuItem;
+        private String mTitle;
+        private String mText;
+        private String mSubTitle;
+        private int mImage;
+        private int mToolbarColor;
+        private boolean isMenuItem = false;
+        private boolean isImage = false;
+        private boolean isText = true;
+        private boolean isSubTitle = false;
+        private boolean isSwipeLeftRight = false;
+        private Toolbar.OnMenuItemClickListener mToolbarListener;
+        private long mDuration = 500;
+        private float mCardRadius = 4f;
+        private boolean autoAnimation = true;
+        private OptionViewAdditional optionViewAdditional;
 
+        /**
+         * Set auto animation of SwipeableCard
+         * @param autoAnimation boolean auto animation, default true
+         */
+        @Override
+        public NormalCard setAutoAnimation(boolean autoAnimation)
+        {
+            this.autoAnimation = autoAnimation;
+            return this;
+        }
         /**
          * Swipe to dismiss (left-right) animation for card, default false
          * @param isSwipe boolean

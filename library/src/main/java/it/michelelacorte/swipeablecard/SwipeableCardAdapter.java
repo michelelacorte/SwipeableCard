@@ -3,6 +3,7 @@ package it.michelelacorte.swipeablecard;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Point;
 import android.location.Address;
 import android.location.Geocoder;
@@ -18,11 +19,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.cooltechworks.creditcarddesign.CreditCardView;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -52,28 +55,39 @@ import java.util.Locale;
  */
 @SuppressWarnings({"deprecation", "ConstantConditions"})
 public class SwipeableCardAdapter extends RecyclerView.Adapter<SwipeableCardAdapter.CardViewHolder> implements AnimationCard{
+    private GoogleMap mGoogleMap;
+    private LatLng mMapLocation;
+    private float mapsZoom;
+    private Context context;
+    private List<OptionView> optionsView;
+    private int height;
+    private int width;
 
     public static class CardViewHolder extends RecyclerView.ViewHolder {
-        CardView card;
-        ImageView image;
-        TextView text;
-        TextView subTitle;
-        Toolbar toolbar;
+        private CardView card;
+        private ImageView image;
+        private TextView text;
+        private TextView subTitle;
+        private Toolbar toolbar;
+        private Button newCreditCard;
+        private CreditCardView creditCardView;
         /**
          * Customizable Icon and Text
          */
-        ImageView iconBtn1;
-        ImageView iconBtn2;
-        ImageView iconBtn3;
-        TextView textBtn1;
-        TextView textBtn2;
+        private ImageView iconBtn1;
+        private ImageView iconBtn2;
+        private ImageView iconBtn3;
+        private TextView textBtn1;
+        private TextView textBtn2;
         /**
          * Maps Variable
          */
-        MapView mapView;
-        TextView streetNameView;
-        RelativeLayout relativeMaps;
-        RelativeLayout relativeNormal;
+        private MapView mapView;
+        private TextView streetNameView;
+        private RelativeLayout relativeMaps;
+        private RelativeLayout relativeNormal;
+        private RelativeLayout relativeCreditCard;
+        private RelativeLayout relativeCreditCardCreation;
 
 
         CardViewHolder(View itemView) {
@@ -90,6 +104,10 @@ public class SwipeableCardAdapter extends RecyclerView.Adapter<SwipeableCardAdap
             streetNameView = (TextView) itemView.findViewById(R.id.streetName);
             relativeNormal = (RelativeLayout) itemView.findViewById(R.id.relativeNormal);
             relativeMaps = (RelativeLayout) itemView.findViewById(R.id.relativeMaps);
+            relativeCreditCard = (RelativeLayout) itemView.findViewById(R.id.relativeCreditCard);
+            relativeCreditCardCreation = (RelativeLayout) itemView.findViewById(R.id.relativeCreditCardCreation);
+            newCreditCard = (Button) itemView.findViewById(R.id.creditCardButton);
+            creditCardView = (CreditCardView) itemView.findViewById(R.id.creditCard);
             /**
              * Set-up customizable Icon and Text
              */
@@ -102,13 +120,7 @@ public class SwipeableCardAdapter extends RecyclerView.Adapter<SwipeableCardAdap
 
 
     }
-    GoogleMap mGoogleMap;
-    LatLng mMapLocation;
-    float mapsZoom;
-    Context context;
-    List<OptionView> optionsView;
-    int height;
-    int width;
+
     public SwipeableCardAdapter(List<OptionView> optionsView, Context context){
         this.optionsView = optionsView;
         this.context = context;
@@ -364,7 +376,7 @@ public class SwipeableCardAdapter extends RecyclerView.Adapter<SwipeableCardAdap
         cardViewHolder.mapView.setVisibility(View.GONE);
         cardViewHolder.relativeNormal.setVisibility(View.GONE);
         cardViewHolder.relativeMaps.setVisibility(View.GONE);
-        if(optionsView.get(i).isTYPE_CARD_MAPS()) {
+        if(optionsView.get(i).isTypeCardMaps()) {
             if((optionsView.get(i).getLatLngArray() != null && optionsView.get(i).getLatLngArray().length > 0) ||
                     (optionsView.get(i).getLatLngList() != null && optionsView.get(i).getLatLngList().size() > 0)
                             && optionsView.get(i).isMultipleMarker() && !optionsView.get(i).isSingleMarker())
@@ -431,7 +443,51 @@ public class SwipeableCardAdapter extends RecyclerView.Adapter<SwipeableCardAdap
                     cardViewHolder.streetNameView.setVisibility(View.VISIBLE);
                 }
             }
-        } else {
+        } else if(optionsView.get(i).isTypeCardCredit()) {
+            if(optionsView.get(i).isCreateCreditCard()) {
+                cardViewHolder.newCreditCard.setVisibility(View.VISIBLE);
+                cardViewHolder.relativeCreditCardCreation.setVisibility(View.VISIBLE);
+                cardViewHolder.relativeCreditCard.setVisibility(View.GONE);
+                final int j = i;
+                cardViewHolder.newCreditCard.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        ActivityCardCreation.setCreditCardView(cardViewHolder.creditCardView, optionsView.get(j), cardViewHolder.newCreditCard, cardViewHolder.relativeCreditCardCreation, cardViewHolder.relativeCreditCard);
+                        Intent intent = new Intent(optionsView.get(j).getActivity(), ActivityCardCreation.class);
+                        optionsView.get(j).getActivity().startActivityForResult(intent, 1);
+                    }
+                });
+            }else {
+                cardViewHolder.creditCardView.setCardExpiry(optionsView.get(i).getDateYear());
+                cardViewHolder.creditCardView.setCardNumber(optionsView.get(i).getRawCardNumber());
+                cardViewHolder.creditCardView.setCardHolderName(optionsView.get(i).getCardHolderName());
+                if(optionsView.get(i).getCvv() != null)
+                {
+                    cardViewHolder.creditCardView.setCVV(optionsView.get(i).getCvv());
+                }else {
+                    cardViewHolder.creditCardView.setCVV(optionsView.get(i).getIntCvv());
+                }
+                cardViewHolder.creditCardView.showFront();
+                cardViewHolder.creditCardView.setOnClickListener(new View.OnClickListener() {
+                    boolean back = false;
+
+                    @Override
+                    public void onClick(View v) {
+                        if (!back) {
+                            cardViewHolder.creditCardView.showBack();
+                            back = true;
+                        } else {
+                            cardViewHolder.creditCardView.showFront();
+                            back = false;
+                        }
+                    }
+                });
+                cardViewHolder.relativeCreditCardCreation.setVisibility(View.GONE);
+                cardViewHolder.relativeCreditCard.setVisibility(View.VISIBLE);
+            }
+        }else {
+            cardViewHolder.relativeCreditCard.setVisibility(View.GONE);
+            cardViewHolder.relativeCreditCardCreation.setVisibility(View.GONE);
             cardViewHolder.relativeNormal.setVisibility(View.VISIBLE);
             cardViewHolder.relativeMaps.setVisibility(View.GONE);
         }
@@ -460,6 +516,9 @@ public class SwipeableCardAdapter extends RecyclerView.Adapter<SwipeableCardAdap
 
         //Check if has menu item
         if (optionsView.get(i).isMenuItem()) {
+            //Reset menù item (avoids duplicate)
+            cardViewHolder.toolbar.getMenu().clear();
+            //Set new menù item
             cardViewHolder.toolbar.setOnMenuItemClickListener(optionsView.get(i).getToolbarListener());
             cardViewHolder.toolbar.inflateMenu(optionsView.get(i).getMenuItem());
         }
