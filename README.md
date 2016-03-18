@@ -117,7 +117,7 @@ Android API 14+
 ##CHANGELOG
 
 **v2.3.0 (Pre-Build)**
-- Credit Card added!!
+- Credit Card added!! (See [Preview](http://i.giphy.com/3ornjQLD95Osp4qlm8.gif))
 - Credit Card in `RecyclerView`
 - Swipe up/down functionality (automatic and swipe gesture mode)
 - Added `isAutoAmination` attribute
@@ -125,7 +125,7 @@ Android API 14+
 - Update documentation to `2.3.0`
 - Update version `1.2` of Application Demo
 - Fixed `RecyclerView` duplicate menù item in multiple marker mode maps
-- Added Codacy code review and fixed some issue (from B to A level)
+- Added Codacy code review and fixed some issue (from B to A level see [![Codacy Badge](https://api.codacy.com/project/badge/grade/99f0b52958a5425e9d9377a6c253b6fd)](https://www.codacy.com/app/micky1995/SwipeableCard))
 
 **v2.2.0**
 - Maps Fragment added (with many method see [Preview](http://i.giphy.com/26FPDYox55jE0UBVu.gif))!
