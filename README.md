@@ -122,7 +122,8 @@ Android API 14+
 - Swipe up/down functionality (automatic and swipe gesture mode)
 - Added `isAutoAmination` attribute
 - Update support library to latest version `23.2.1`
-- Version 1.2 of Application Demo
+- Update documentation to `2.3.0`
+- Update version `1.2` of Application Demo
 - Fixed `RecyclerView` duplicate menù item in multiple marker mode maps
 - Added Codacy code review and fixed some issue (from B to A level)
 
