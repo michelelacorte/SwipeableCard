@@ -32,14 +32,14 @@
 
 ####[See video demo here](https://www.youtube.com/watch?v=81gAqOm1m5w)
 
-####Credit Card (Coming Soon Version)
+####Credit Card!!
 #####In collaboration with [cooltechworks](https://github.com/cooltechworks) and [CreditCardView](https://github.com/cooltechworks/CreditCardView)
 
 ![alt tag](http://i.giphy.com/3ornjQLD95Osp4qlm8.gif)
 
 ![alt tag](http://i.giphy.com/26tn8QOAqL4SVyRsA.gif)
 
-####Maps Card!!
+####Maps Card
 
 ![alt tag](http://i.giphy.com/26FPDYox55jE0UBVu.gif) 
 
@@ -66,7 +66,7 @@
 
 Swipeable Card is pushed to JCenter, so you just need to add the following dependency to your `build.gradle`.
 ```groovy
-compile 'it.michelelacorte.swipeablecard:library:2.2.0'
+compile 'it.michelelacorte.swipeablecard:library:2.3.0'
 ```
 
 In alternative you can use AAR repository with:
@@ -85,7 +85,7 @@ allprojects {
 And add this dependecies
 
 ```groovy
-compile 'it.michelelacorte.swipeablecard:library:2.2.0@aar'
+compile 'it.michelelacorte.swipeablecard:library:2.3.0@aar'
 ```
 
 ##DOCUMENTATION
@@ -116,7 +116,7 @@ Android API 14+
 
 ##CHANGELOG
 
-**v2.3.0 (Pre-Build)**
+**v2.3.0**
 - Credit Card added!! (See [Preview](http://i.giphy.com/3ornjQLD95Osp4qlm8.gif))
 - Credit Card in `RecyclerView`
 - Swipe up/down functionality (automatic and swipe gesture mode)
