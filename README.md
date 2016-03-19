@@ -133,7 +133,7 @@ Android API 14+
 - Maps single marker mode and multiple marker mode support
 - Improved hierarchy type of Card
 - Improved `Builder()` constructor
-- Fixed issue in `OptioViewAdditional`
+- Fixed issue in `OptionViewAdditional`
 - Added documentation to GitHub repo: [Here](http://michelelacorte.github.io/SwipeableCard/docs/javadoc/index.html)
 - Version 1.1 of Application Demo
 
