@@ -36,7 +36,7 @@ This project needs you! If you would like to support this project's further deve
 
 * **[Donate $2799]**: Go buddy, buy Macbook Pro for yourself!
 
-Of course, you can also choose what you want to donate, all donations are awesome, or just choose import here [Donate](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=LY7EX8WMWPWV6)
+Of course, you can also choose what you want to donate, all donations are awesome, or just choose import here <span class="badge-paypal"><a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=LY7EX8WMWPWV6" title="Donate to this project using Paypal"><img src="https://img.shields.io/badge/paypal-donate-yellow.svg" alt="PayPal donate button" /></a></span>
 
 ##EXAMPLE
 
