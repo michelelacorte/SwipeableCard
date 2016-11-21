@@ -18,6 +18,8 @@
 
 ##DONATIONS
 
+This project needs you! If you would like to support this project's further development, the creator of this project or the continuous maintenance of this project, feel free to donate. Your donation is highly appreciated (and I love food, coffee and beer). Thank you!
+
 **PayPal**
 
 * **[Donate $5]**: Thank's for creating this project, here's a coffee (or some beer) for you!
