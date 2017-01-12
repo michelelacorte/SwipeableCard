@@ -228,6 +228,8 @@ If you want to contribute to the project fork it and open [Pull Request](https:/
 
 Each proposal will be accepted!
 
+Follow my (Google+)[https://plus.google.com/u/0/collection/McidZB]
+
 ##LICENSE
 
 ```
