@@ -254,3 +254,8 @@ limitations under the License.
 [Donate $50]: 		https://www.paypal.me/MicheleLacorte/50
 [Donate $100]: 		https://www.paypal.me/MicheleLacorte/100
 [Donate $2799]: 	https://www.paypal.me/MicheleLacorte/2799
+
+## Support on Beerpay
+Hey dude! Help me out for a couple of :beers:!
+
+[![Beerpay](https://beerpay.io/michelelacorte/SwipeableCard/badge.svg?style=beer-square)](https://beerpay.io/michelelacorte/SwipeableCard)  [![Beerpay](https://beerpay.io/michelelacorte/SwipeableCard/make-wish.svg?style=flat-square)](https://beerpay.io/michelelacorte/SwipeableCard?focus=wish)
