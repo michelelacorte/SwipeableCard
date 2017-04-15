@@ -15,7 +15,7 @@
 
 [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
 
-##DONATIONS
+## DONATIONS
 
 This project needs you! If you would like to support this project's further development, the creator of this project or the continuous maintenance of this project, feel free to donate. Your donation is highly appreciated (and I love food, coffee and beer). Thank you!
 
@@ -40,46 +40,46 @@ Of course, you can also choose what you want to donate, all donations are awesom
 If you want to contribute you may download [Donation App](https://play.google.com/store/apps/details?id=it.michelelacorte.githubdonation) from Google Play
 
 
-##EXAMPLE
+## EXAMPLE
 
-####Swipeable Card is on Google Play!!!
+#### Swipeable Card is on Google Play!!!
 
 <a href="https://play.google.com/store/apps/details?id=it.michelelacorte.exampleswipeablecard">
 <img alt="Get it on Google Play" src="https://s32.postimg.org/50h5qj4lx/google_play_badge.png" />
 </a>
 
-####If you want to help me please download Donation App!!
+#### If you want to help me please download Donation App!!
 
 <a href="https://play.google.com/store/apps/details?id=it.michelelacorte.githubdonation">
 <img alt="Get it on Google Play" src="https://s32.postimg.org/50h5qj4lx/google_play_badge.png" />
 </a>
 
-####And Amazon Store
+#### And Amazon Store
 
 <a href="http://www.amazon.it/Michele-Lacorte-Swipeable-Card-Demo/dp/B01BKGSSSS/ref=sr_1_1?s=mobile-apps&ie=UTF8&qid=1454943441&sr=1-1&keywords=swipeable+card+demo">
 <img alt="Get it on Amazon Store" src="http://s29.postimg.org/lriupxrl3/amazon_apps_link.png" />
 </a>
 
-####[See video demo here](https://www.youtube.com/watch?v=81gAqOm1m5w)
+#### [See video demo here](https://www.youtube.com/watch?v=81gAqOm1m5w)
 
-####Credit Card!!
-#####In collaboration with [cooltechworks](https://github.com/cooltechworks) and [CreditCardView](https://github.com/cooltechworks/CreditCardView)
+#### Credit Card!!
+##### In collaboration with [cooltechworks](https://github.com/cooltechworks) and [CreditCardView](https://github.com/cooltechworks/CreditCardView)
 
 ![alt tag](http://i.giphy.com/3ornjQLD95Osp4qlm8.gif)
 
 ![alt tag](http://i.giphy.com/26tn8QOAqL4SVyRsA.gif)
 
-####Maps Card
+#### Maps Card
 
 ![alt tag](http://i.giphy.com/26FPDYox55jE0UBVu.gif) 
 
 ![alt tag](http://s2.postimg.org/i7te06hqx/Screenshot_2016_02_20_21_44_02.png)
 
-####Swipe to Dismiss
+#### Swipe to Dismiss
 
 ![alt tag](http://i.giphy.com/3o7rc2savJab4JExI4.gif)
 
-####New Floating Action Button!!!
+#### New Floating Action Button!!!
 
 ![alt tag](http://i.giphy.com/3o8doUXxjOCwHw2GEo.gif)
 
@@ -87,12 +87,12 @@ If you want to contribute you may download [Donation App](https://play.google.co
 
 ![alt tag](http://i.giphy.com/d2Za0uOe8fPYa38Q.gif)
 
-####Possibility to use SwipeableCard in RecyclerView!!!
+#### Possibility to use SwipeableCard in RecyclerView!!!
 
 ![alt tag](http://i.giphy.com/3o8doQxv28CVTGdM6Q.gif)
 
 
-##USAGE
+## USAGE
 
 Swipeable Card is pushed to JCenter, so you just need to add the following dependency to your `build.gradle`.
 ```groovy
@@ -118,7 +118,7 @@ And add this dependecies
 compile 'it.michelelacorte.swipeablecard:library:2.3.0@aar'
 ```
 
-##DOCUMENTATION
+## DOCUMENTATION
 
 - [Full Documentation](http://michelelacorte.github.io/SwipeableCard/docs/javadoc/index.html)
 
@@ -136,15 +136,15 @@ compile 'it.michelelacorte.swipeablecard:library:2.3.0@aar'
 
 - [Attribute Table](https://github.com/michelelacorte/SwipeableCard/blob/master/ATTRS.md)
 
-##SYSTEM REQUIREMENT
+## SYSTEM REQUIREMENT
 
 Android API 14+
 
-##STATUS
+## STATUS
 
 ![project maintained](https://img.shields.io/badge/Project-Maintained-green.svg)
 
-##CHANGELOG
+## CHANGELOG
 
 **v2.3.0**
 - Credit Card added!! (See [Preview](http://i.giphy.com/3ornjQLD95Osp4qlm8.gif))
@@ -226,11 +226,11 @@ Method called by `OptionView.Builder()`
 - Added method `text(String text)`for set custom text
 - Added method `build()` for build swipeable card with custom configuration
 
-##CREDITS
+## CREDITS
 
 Author: Michele Lacorte (micky1995g@gmail.com)
 
-##CONTRIBUTING
+## CONTRIBUTING
 
 If you want to contribute to the project fork it and open [Pull Request](https://github.com/michelelacorte/SwipeableCard/pulls), or contact me by e-mail.
 
@@ -238,7 +238,7 @@ Each proposal will be accepted!
 
 Follow my [Google+](https://plus.google.com/u/0/collection/McidZB)
 
-##LICENSE
+## LICENSE
 
 ```
 Copyright 2016 Michele Lacorte
